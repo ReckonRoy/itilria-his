@@ -62,7 +62,7 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 						<input type="date" name="start_date" class="field">
 						<label>Address</label>
 						<textarea name="address" rows="3" cols="40"></textarea>
-						<input type="submit" value="Register" id="reg-btn">
+						<input type="button" value="Register" id="reg-btn">
 					</form>
 				</div>
 				<!---------------------END staff registration container------------------------------------>

@@ -82,6 +82,19 @@ let tabs = {
 				update.xhr.open("POST", update.url, true);
 				update.xhr.onreadystatechange = update.response;
 				update.xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+				var register_form = document.getElementById("");
+				var n = ;
+				var s;
+				var e;
+				var con;
+				var prof;
+				var acc_type;
+				var pr_n;
+				var nat;
+				var s_d;
+				var addr;
+
 				update.xhr.send("email=" + update.form.email.value);
 
 				document.body.style.cursor = "wait";
