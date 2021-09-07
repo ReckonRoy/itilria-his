@@ -21,6 +21,8 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 	</head>
 	<body>
 
+		<!-- Overlay -->
+		<div id="overlay"></div>
 <!--/**********************************************************************************************************
 TABLE CONTAINING PRESCRIPTION DETAILS
 ************************************************************************************************************/-->
@@ -94,7 +96,7 @@ TABLE CONTAINING PRESCRIPTION DETAILS
 				<input type="button" value="Get chargesheet" id="chargesheet-btn">
 			</form>
 			</div>
-			<div id="close">close</div>
+			<input type="button" id="close" value="X">
 		</div>
 	<main>
 <!--******************************************************************************************************************************* *div for patient details

@@ -6,6 +6,7 @@ let emr = {
 	emr_date: document.getElementById('emr-rd-div'),
 	date_table: document.getElementById("date_table"),
 	close_btn: document.getElementById("close"),
+	overlay: document.getElementById('overlay'),
 	access_option: null,
 	xhr: null,
 	url: null,
@@ -89,6 +90,7 @@ let emr = {
 	runEmr: function()
 	{
 		emr.createXHR();
+		emr.overlay.style.display = "none";
 		emr.emr_btn.addEventListener("click", function(){
 			emr.access_option = "emr_default_access";
 			emr.emr_date.innerHTML = "";
@@ -120,6 +122,7 @@ let emr = {
 	 */
 	prd_container: function (parent, dates) {
 		var table = document.createElement("table");
+		table.className = "record_table_class";
 		var thead = document.createElement("thead");
 		var th = document.createElement("th");
 		th.appendChild(document.createTextNode("Patient Record(s)"));

@@ -1,3 +1,14 @@
+#overlay{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: black;
+	opacity: 0.9;
+	z-index: 100;
+}
+
 #search-container{
 	display: grid;
 	width: 80%;
@@ -276,48 +287,54 @@ th, td{
 }
 
 .print_prescription_table{
-				border: 1px solid black; 
-				width: 700px;
-				border-collapse: collapse;
-				overflow-y: auto;
-			}
-			
+	border: 1px solid black; 
+	width: 700px;
+	border-collapse: collapse;
+	overflow-y: auto;
+}
 
-			.prescription_thead{
-				border: 1px solid black;
 
-			}
+.prescription_thead{
+	border: 1px solid black;
 
-			.prescription_tdata{
-				border: 1px solid black;
-			}
-			.theadClass{
-				border: none;
-			}
+}
 
-			.drugs_prescribed{
-				border: none;
-			}
+.prescription_tdata{
+	border: 1px solid black;
+}
+.theadClass{
+	border: none;
+}
+
+.drugs_prescribed{
+	border: none;
+}
 /*******************************************************************************************************************/
 #assesment-form input[type=text]{
 	padding: 10px 8px;
 	box-sizing: border-box;
 }
+/******************************************************************************************************************
+* Emr Record
+/******************************************************************************************************************/
 #emr-container{
 	display: grid;
 	grid-template-columns: 79% 19%;
 	grid-column-gap: 1%;
 	position: relative;
-	width: 100%;
+	width: 95%;
 	padding: 40px 0px;
 	box-sizing: border-box;
 	background-color: white;
 	color: gray;
 	z-index: 100;
+	margin-top: 50px;
+	margin-left: 2.5%;
+	border-radius: 10px;
+	border: 3px solid aqua;
 }
 
 #emr-record-div{
-	border: 1px solid gray;
 	background-color: white;
 	width: 100%;
 	margin-left: 0%;
@@ -346,6 +363,30 @@ th, td{
 	width:  90%;
 	height: 250px;
 }
+/************************************************Emr Records By Date****************************************************/
+#emr-rd-div{
+	
+}
+
+.record_table_class
+{
+	border: 1px solid gray;
+	border-collapse: collapse;
+	border-spacing: 0;
+	box-sizing: border-box;
+}
+
+.record_table_class td{
+	border: 1px solid gray;
+}
+
+.record_table_class td:hover{
+	cursor: pointer;
+	background-color: green;
+	color: white;
+}
+
+/************************************************************************************************************************/
 
 #emr-chargesheet:hover
 {
@@ -395,11 +436,14 @@ th, td{
 
 #close{
 	border: 1px solid black;
-	border-radius: 5px;
+	border-radius: 20px;
 	position: absolute;
-	width: 50px;
-	top: 0;
-	right: 0;
+	width: 40px;
+	height: 40px;
+	font-weight: bolder;
+	font-weight: 16px;
+	top: -20px;
+	right: -20px;
 	background-color: red;
 	color: black;
 	box-sizing: border-box;
