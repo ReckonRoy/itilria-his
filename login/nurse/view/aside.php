@@ -1,10 +1,11 @@
 <aside>
 	<div id="co-nldiv">
-		<img src="../../assets/img/favicon-128.png">
+		<img src="../../../assets/img/favicon-128.png">
 		<span id="company-name">ITilria</span>
 	</div>
 	<ul>
-		<li><a href="./appointments.php">Messages</a></li>
-		<li><a href="./consultion.php">Reports</a></li>
+		<li><a href="./messages.php">Messages</a></li>
+		<li><a href="./appointments.php">Appointments</a></li>
+		<li><a href="./consultion.php">Consultation</a></li>
 	</ul>
 </aside>

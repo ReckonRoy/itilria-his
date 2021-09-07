@@ -71,11 +71,10 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 				<!------------------------------------------------------------------------------------>
 				<label>BMI</label>
 				<input type="text" name="bmi" id="bmi" class="fields">
-				<label>bmi</label>
 				<!------------------------------------------------------------------------------------>
 				<label>Patient History</label>
 				<textarea id="history-textarea" name="history" rows="5"></textarea>
-				<input type="button" id="vitals-btn" value=Submit">
+				<input type="button" id="vitals-btn" value="Save">
 		</form>
 	</div>
 </main>
