@@ -1,0 +1,227 @@
+#search-container{
+	display: grid;
+	width: 80%;
+	margin-left: 10%;
+	box-sizing: border-box;
+	border: 1px solid gray;
+	border-radius: 10px;
+	margin-top: 50px;
+}
+
+#date_table{
+	width: 100px;
+	border: 1px solid black;
+	height: 200px;
+}
+#date_table tr, td{
+	border: 1px solid black;
+}
+
+#search-field{
+	width: 90%;
+	margin-left: 5%;
+	padding: 10px 5px;
+	box-sizing: border-box;
+	margin-top: 16px;
+	border-radius: 10px;
+	font-size: 14px;
+	font-weight: bold;
+	color: gray;
+	background-color: white;
+}
+
+#search-results{
+	border: 1px solid gray;
+	width: 90%;
+	height: 150px;
+	margin-left: 5%;
+	box-sizing: border-box;
+	padding: 10px 16px;
+	margin-top: 20px;
+	border-radius: 10px;
+	font-style: italic;
+	background-color: white;
+	color: grey;
+	margin-bottom: 20px;
+}
+
+#patient-details{
+	display: none;
+	width: 80%;
+	margin-left: 10%;
+	border: 1px solid gray;
+	border-radius: 10px;
+	margin-top: 20px;
+}
+
+#control-div{
+	display: grid;
+	grid-template-columns: 20%;
+	width: 80%;
+	border-radius: 10px;
+	border: 1px solid gray;
+	background-color: purple;
+	color: white;
+	margin-left: 10%;
+	margin-top: 20px;
+	box-sizing: border-box;
+	padding: 10px;
+	padding-left: 10px;
+}
+
+#emr-btn{
+	height: 35px;
+	outline: 1px solid orange;
+	background-color: #4caf50;
+	border: 1px solid purple;
+	color: white;
+	font-size: 16px;
+	border-radius: 10px;
+}
+
+#emr-btn:hover{
+	cursor: pointer;
+	outline-color: blue;
+}
+
+#c-container
+{
+	display: grid;
+	border: 1px solid gray;
+	grid-template-columns: 100%;
+	grid-row-gap: 2em;
+	width: 80%;
+	margin-top: 50px;
+	margin-left: 10%;
+}
+#patient-vitals
+{
+	display: grid;
+	grid-row-gap: 1em;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	box-sizing: border-box;
+}
+
+#vitals-container{
+	
+
+}
+
+#fetch-v-btn{
+	padding: 8px 0;
+	border: 1px solid gray;
+	background-color: blue;
+	color: white;
+	outline: 1px solid purple !important;
+	width: 150px;
+	border-radius: 10px;
+	font-weight: bolder;
+	font-size: 14px;
+	margin-left: 5%;
+}
+
+#fetch-v-btn:hover{
+	cursor: pointer;
+	outline: 1px solid orange!important;
+}
+
+table{
+	border: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
+	box-sizing: border-box;
+	width: 90%;
+	margin-left: 5%;
+	border-radius: 10px;
+	text-align: left;
+}
+
+th, td{
+	padding: 10px 10px;
+	border:  none;
+	text-align: left;
+}
+
+.ops-form{
+	display: grid;
+	grid-row-gap: 1.5em;
+	border: 1px solid gray;
+	width: 90%;
+	margin-left: 5%;
+	padding: 30px 10px;
+	box-sizing: border-box;
+	border-radius: 10px;
+}
+
+.ops-form > label{
+	font-weight: bolder;
+	font-size: 18px;
+	background-color: white;
+	padding: 10px 0;
+	padding-left: 10px;
+	box-sizing: border-box;
+	color: gray;
+}
+
+.save_btn{
+	background-color: purple;
+	outline: 1px solid blue !important;
+	padding: 8px 0;
+	box-sizing: border-box;
+	border-radius: 10px;
+	color: white;
+	font-weight: bolder;
+	font-size: 14px;
+	width: 20%;
+	margin-left: 80%;
+}
+
+
+#assesment-form input[type=text]{
+	padding: 10px 8px;
+	box-sizing: border-box;
+}
+#emr-container{
+	display: none;
+	position: relative;
+	width: 100%;
+	padding: 40px;
+	box-sizing: border-box;
+	background-color: white;
+	color: gray;
+	z-index: 100;
+}
+#emr-record-div{
+	border: 1px solid gray;
+	background-color: brown;
+	width: 80%;
+	margin-left: 0%;
+	color: white;
+	border-radius: 15px;
+	overflow-x: auto;
+	font-size: 14px;
+}
+
+#close{
+	border: 1px solid black;
+	border-radius: 5px;
+	position: absolute;
+	width: 50px;
+	top: 0;
+	right: 0;
+	background-color: red;
+	color: black;
+	box-sizing: border-box;
+	padding: 1px 2px;
+}
+
+#close:hover{
+	border: 1px solid darkred;
+	cursor:  pointer;
+	color: white;
+}
+
+#table-header{
+	text-align: center;
+}

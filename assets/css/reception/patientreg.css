@@ -1,0 +1,162 @@
+/*-------------------------------------------------------------------------------------------------------------
+*Style for patient registration form and related properties
+-------------------------------------------------------------------------------------------------------------*/
+
+#main-header{
+	margin-top: 80px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	font-family: sans-serif;
+}
+
+.form-header{
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	font-family: sans-serif;
+	margin-bottom: 30px;
+}
+
+#form_div{
+	display: block;
+	width: 80%;
+	margin-left: 10%;
+	font-family: monospace;
+}
+
+#form_div form{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-row-gap: 5px;
+	font-weight: bold;
+	font-size: 0.9rem;
+}
+
+.fields{
+	padding: 7px 0;
+}
+
+#basic-det{
+	display: grid;
+	border: 1px solid gray;
+	grid-column: 1/3;
+	grid-template-columns: 1fr 1fr;
+	grid-row-gap: 5px;
+}
+
+#age{
+	width: 15%;
+}
+
+#patient-cont{
+	width: 50%;
+}
+
+#marital_status{
+	display: grid;
+	grid-column: 1/3;
+	grid-template-columns: 1fr 1fr;
+	width: 25%;
+	border: 1px solid gray;
+}
+
+#gender_div{
+	display: grid;
+	grid-column: 1/3;
+	grid-template-columns: 1fr 1fr;
+	width: 25%;
+	border: none;
+	grid-row-gap: 5px;
+}
+
+#medical-cond{
+	display: grid;
+	grid-column: 1/3;
+	grid-template-columns: 1fr 1fr;
+	border: 1px solid gray;
+	grid-row-gap: 5px;
+}
+
+#m-o-p
+{
+	display: grid;
+	grid-column: 1/3;
+	grid-template-columns: 1fr 1fr;
+	width: 25%;
+	border: 1px solid gray;
+	grid-row-gap: 5px;
+}
+
+#nok{
+	display: grid;
+	position: relative;
+	grid-template-columns: 1fr 1fr;
+	grid-column: 1/3;
+	border: 1px solid gray;
+	grid-row-gap: 5px;
+}
+
+#nd-parent{
+	position: relative;
+}
+#nok-rel{
+	width: 100%;
+	box-sizing: border-box;
+}
+#nok-dropdown{
+	display: none;
+	position: absolute;
+	background-color: #3e4b57;
+	border: 2px solid darkorange;
+	color: white;
+	margin-top: 5px;
+	width: 100%;
+	font-family: sans-serif;
+	box-sizing: border-box;
+	border-radius: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#nok-dropdown ol{
+	list-style-type: none;
+	padding-left: 0px;
+	line-height: 1.3em;
+}
+
+#nok-dropdown li{
+	padding: 5px 0;
+}
+
+#nok-dropdown li:hover{
+	cursor: pointer;
+	background-color: gray;
+}
+
+#employer-contact{
+	width: 50%;
+}
+
+#employer-det{
+	display: grid;
+	grid-column: 1/3;
+	grid-template-columns: 1fr 1fr;
+	border: 1px solid gray;
+	grid-row-gap: 5px;
+	margin-bottom: 50px;
+}
+
+#reg_btn{
+	grid-column: 1/3;
+	text-align: center;
+	padding: 10px;
+	cursor: pointer;
+	background-color: gray;
+	color: white;
+	font-weight: bold;
+	font-size: 16px;
+	font-family: sans-serif;
+	border: 1px solid gray;
+	border-radius: 5px;
+}

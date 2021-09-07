@@ -1,0 +1,157 @@
+nav aside section footer article header main{
+	display: block;
+}
+
+body{
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+#container{
+	width: 100%;
+	position: relative;
+}
+
+header{
+	position: fixed;
+	width: 85%;
+	background-color: #3e4b57;;
+	margin-left: 15%;
+	top: 0;
+	height: 60px;
+	z-index: 10;
+}
+/*-----------------------------------------------------------------------------------------------------------------
+Section for nav style
+------------------------------------------------------------------------------------------------------------------*/
+#main-nav{
+	box-sizing: border-box;
+	padding: 5px 14px;
+	height:  60px;
+}
+/*avatar parent div*/
+#avatar-pdiv{
+	position: relative;
+	float: right;
+	width: 20%;
+}
+
+/*the avatar profile button*/
+#avatar-div{
+	background-color: white;
+	font-weight: bolder;
+	font-size: 1.5em;
+	box-sizing: border-box;
+	border-radius: 50%;
+	height: 45px;
+	width: 45px;
+	margin-left: 70%;
+	text-align: center;
+	padding-top: 9px;
+}
+#avatar-div:hover{
+	cursor: pointer;
+	color: white;
+	background-color: gray;
+	border: 2px solid pink;
+}
+
+#profile-menu-div{
+	display: none;
+	position: absolute;
+	width: 200px;
+	left: 0;
+	border: 1px solid gray;
+	top: 100%;
+	background-color: grey;
+	color: white;
+	border-radius: 10px;
+}
+
+#profile-menu-div > ul{
+	list-style-type: none;
+	padding-left: 0px;
+}
+
+#profile-menu-div li{
+	padding: 5px 10px;
+}
+
+#profile-menu-div li:hover{
+	background-color: purple;
+	cursor: pointer;
+}
+/**************************************************************************************************************************/
+main{
+	position: fixed;
+	width: 84.5%;
+	background-color: #b5b0b8;
+	margin-left: 15%;
+	top: 50px;
+	bottom: 0%;
+	color: white;
+	overflow-y: auto;
+	white-space: nowrap;
+}
+
+main > h1{
+	text-align: center;
+	margin-top: 200px;
+}
+/*************************************************************************************************************************
+Aside style section 
+*************************************************************************************************************************/
+aside{
+	position: fixed;
+	width: 15%;
+	background-color: #1e0a2b;
+	top: 0;
+	bottom: 0;
+	color: white;
+}
+
+#co-nldiv{
+	display: grid;
+	grid-template-columns: 1fr;
+	height: 150px;
+	box-sizing: border-box;
+	padding: 5px 0;
+	text-align: center;
+}
+
+#co-nldiv img{
+	width: 50%;
+	height: 80%;
+	margin-left: 25%;
+}
+
+#company-name{
+	font-weight:  bolder;
+	color: red;
+}
+
+ul{
+	list-style-type: none;
+	padding: 0;
+}
+
+li{
+	margin-bottom: 15px;
+}
+
+.aside-btn{
+	width: 90%;
+	padding: 8px 0;
+	color: white;
+	background-color: green;
+	font-weight: bold;
+	border: 1px solid gray;
+	border-radius: 10px;
+	margin-left: 5%;
+}
+
+.aside-btn:hover{
+	cursor: pointer;
+	border: 1px solid purple;
+	outline: 1px solid orange;
+}
