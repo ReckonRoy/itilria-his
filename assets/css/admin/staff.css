@@ -8,17 +8,28 @@ overlay, server response dialg dialog
 	height: 100vh;
 	background-color: black;
 	opacity: 0.8;
+	z-index: 20;
 }
+
+.error{
+	border: 2px solid red;
+	color: red;
+}
+
+.success{
+	border: 2px solid green;
+	color: green;
+}
+
 #server-message-response{
 	display: none;
 	position: absolute;
 	width: 40%;
-	border: 2px solid red;
-	color: red;
 	border-radius: 10px;
 	margin-left: 30%;
 	height: 200px;
 	background-color: white;
+	z-index: 999;
 }
 #close-btn{
 	border: 1px solid red;

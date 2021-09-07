@@ -31,10 +31,10 @@ if(isset($_POST['name_field'])){
             $register->setEmployeeDetails($profession, $practice_number, $formatedHireDate);
             $register->processQuery($mysqli);
     }else{
-        echo json_encode([false, "Please fill in all required fields denoted by a *"]);
+        echo json_encode([false, "Please fill in all required fields denoted by a *", "error"]);
     }
 }else{
-    echo json_encode([false, "Please fill in all required fields denoted by a *"]);
+    echo json_encode([false, "Please fill in all required fields denoted by a *", "error"]);
 }
 
 class Register{
@@ -201,7 +201,7 @@ class Register{
         $result = $mysqli->query($query);
         if($result->num_rows != 0){
             $this->error = "Sorry this user account is already taken";
-            echo $this->error;
+            echo json_encode([false, $this->error, "error"]);
             exit();
         }
         

@@ -6,9 +6,10 @@ let tabs = {
 	reg_container: document.getElementById("reg-content-div"),
 	update_container: document.getElementById("update-content-div"),
 	delete_container: document.getElementById("delete-content-div"),
+	reg_div: document.getElementById("reg-content-div"),
 	close_btn: document.getElementById("close-btn"),
 	p_tag: document.getElementById("message"),
-	errorm_div: document.getElementById("server-message-response"),
+	smp_div: document.getElementById("server-message-response"),
 	register_form: document.getElementById("reg-form"),
 	xhr: null,
 	register_btn: document.getElementById("reg-btn"),
@@ -131,9 +132,9 @@ let tabs = {
 					let result = JSON.parse(tabs.xhr.responseText);
 					if(result[0] == false)
 					{
-						tabs.container(tabs.p_tag, result[1]);
+						tabs.container(tabs.p_tag, result[1], result[2]);
 					}else if(result[0] == true){					
-						tabs.container(tabs.p_tag, result[1]);
+						tabs.container(tabs.p_tag, result[1], result[2]);
 					}
 				}catch(e){
 					alert("error reading response: " + e.toString());
@@ -157,20 +158,28 @@ let tabs = {
 		});
 	},
 
-	container: function(p_tag, message){
+	container: function(p_tag, message, class_state){
 		var overlay = document.getElementById("overlay");
 		p_tag.innerHTML = "";
-		overlay.style.display = "block";
-		tabs.errorm_div.style.display = "none";
-		if (tabs.errorm_div.style.display == "none"){
-
-			tabs.errorm_div.style.display = "block";
+		
+		tabs.smp_div.className = class_state;
+		tabs.smp_div.style.display = "none";
+		overlay.style.display = "none";
+		if (tabs.smp_div.style.display == "none"){
+			overlay.style.display = "block";
+			tabs.smp_div.style.display = "block";
 		}
+		//position pop-up in appropriate place in relation to the meeting divs 
+        var calcDiv1_geom = tabs.reg_div.clientHeight / 2;
+        var calcDiv2_geom = tabs.smp_div.clientHeight / 2;
+      	var process_geom = ((tabs.reg_div.offsetTop + tabs.reg_div.clientHeight) - (calcDiv1_geom + calcDiv2_geom) - 300);
+        tabs.smp_div.style.top = process_geom + "px";
+		window.scrollTo(0, tabs.reg_div.offsetTop);
 		
 		p_tag.appendChild(document.createTextNode(message));
 		tabs.close_btn.addEventListener("click", function(){
 			overlay.style.display = "none";
-			tabs.errorm_div.style.display = "none";
+			tabs.smp_div.style.display = "none";
 		});
 	},
 	

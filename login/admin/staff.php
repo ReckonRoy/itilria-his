@@ -21,18 +21,18 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 	
 	<body>
 		<div id="overlay"></div>
+		<div id="server-message-response">
+			<input type="button" id="close-btn" value="close">
+			<div class="clear_float"></div>
+			<p id="message"></p>
+		</div>
 		<div id="container">
 		<?php	
 			require "./header.php";
 		?>	
 		<main>
 			<!-------------------------------------Server response message div----------------------------------------->
-			<div id="server-message-response">
-				<input type="button" id="close-btn" value="close">
-				<div class="clear_float"></div>
-				<p id="message">
-				</p>
-			</div>
+			
 			<!--------------------------------------------------------------------------------------------------------->
 			<nav id="staff-nav">
 				<button id="register-tab">Register</button> | <button id="update-tab">Update</button> | <button id="delete-tab">Delete</button> | <button id="assign-tab">Assign post</button>
@@ -62,7 +62,7 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 							<option value="nurse">Nurse</option>
 							<option value="receptionist">Receptionist</option>
 						</select><label class="star-w">*</label>
-						<label>Practice</label>						
+						<label>Practice number</label>						
 						<input type="text" name="practice_number" class="field"><label class="star-w">*</label>
 						<label>Nationality</label>
 						<input type="text" name="nationality" class="field"><label class="star-w">*</label>
