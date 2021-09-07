@@ -18,6 +18,11 @@ if(isset($_POST['employee_id']))
     $new_pwd = $_POST['new_pwd'];
     $confirm_pwd = $_POST['confirm_pwd'];
     
+    if(empty($current_pwd) || empty($new_pwd) || empty($confirm_pwd))
+    {
+        echo json_encode([false, "Please fill in all password related fields", "passwordform", "error"]);
+        exit();
+    }
     $user = new User();
     $user->getCredPassword($mysqli, $id);
     $user->setPasswordProps($current_pwd, $new_pwd, $confirm_pwd);
@@ -36,7 +41,11 @@ if(isset($_POST['employee_id']))
 }else if(isset($_POST['username_id'])){
     $staff_id = $_POST["username_id"];
     $username = $_POST['username'];
-    
+    if(empty($username))
+    {
+        echo json_encode([false, "Please fill in the username field", "username_form", "error"]);
+        exit();
+    }
     $user = new User();
     $user->setUsername($username);
     $user->setID($staff_id);

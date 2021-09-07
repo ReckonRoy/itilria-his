@@ -191,7 +191,7 @@
     }
     
     function updateUsername($mysqli){
-        $query = "UPDATE credentials SET username='".$this->getUsername()."' WHERE credential_id='".$this->getID()."'";
+        $query = "UPDATE credentials SET username='".$this->getUsername()."' WHERE id='".$this->getID()."'";
         $result = $mysqli->query($query);
         if($result)
         {

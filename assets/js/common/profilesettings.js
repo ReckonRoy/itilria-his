@@ -4,12 +4,13 @@ let profileSettingsObject = {
 	userform: document.getElementById('user-form'),
 	passwordform: document.getElementById('password-form'),
 	update_btn: document.getElementById('update-btn'),
+	username_btn: document.getElementById('username-btn'),
 	change_pwd_btn: document.getElementById('cpwd-btn'),
 	close_btn: document.getElementById("close-btn"),
 	p_tag: document.getElementById("message"),
 	smp_div: document.getElementById("server-message-response"),
 	updateform: 'updateform',
-	username_form: document.getElementById('username-form');
+	username_form: document.getElementById('username-form'),
 
 	createXHR: function()
 	{
@@ -101,6 +102,9 @@ let profileSettingsObject = {
 						if(result[2] == "passwordform")
 						{
 							profileSettingsObject.container(profileSettingsObject.p_tag, result[1], result[3]);
+						}else if(result[2] == "username_form")
+						{
+							profileSettingsObject.container(profileSettingsObject.p_tag, result[1], result[3]);
 						}
 					}else if(result[0] == true){	
 						if(result[2] == "userform")
@@ -117,7 +121,7 @@ let profileSettingsObject = {
 							profileSettingsObject.container(profileSettingsObject.p_tag, result[1], result[3]);
 						}else if(result[2] == 'updateform'){
 							profileSettingsObject.container(profileSettingsObject.p_tag, result[1], result[3]);
-						}}else if(result[2] == 'username_form'){
+						}else if(result[2] == 'username_form'){
 							profileSettingsObject.container(profileSettingsObject.p_tag, result[1], result[3]);
 						}				
 					}
@@ -154,6 +158,7 @@ let profileSettingsObject = {
 		profileSettingsObject.createXHR();
 		profileSettingsObject.passwordform.name = "";
 		profileSettingsObject.updateform = "";
+		profileSettingsObject.username_form.name = "";
 		profileSettingsObject.request();
 		
 		this.update_btn.addEventListener("click", function(){
@@ -163,6 +168,7 @@ let profileSettingsObject = {
 			{
 				profileSettingsObject.passwordform.name = "";
 				profileSettingsObject.userform.name = "";
+				profileSettingsObject.username_form.name = "";
 				profileSettingsObject.request();
 			}
 		});
@@ -173,8 +179,21 @@ let profileSettingsObject = {
 			{
 				profileSettingsObject.userform.name = "";
 				profileSettingsObject.updateform = "";
+				profileSettingsObject.username_form.name = "";
 				profileSettingsObject.request();
 			}
+		});
+		this.username_btn.addEventListener("click", function(){
+			profileSettingsObject.username_form.name = "username_form";
+			if(profileSettingsObject.username_form.name == "username_form")
+			{
+				profileSettingsObject.userform.name = "";
+				profileSettingsObject.updateform = "";
+				profileSettingsObject.passwordform.name = "";
+				profileSettingsObject.request();
+			}
+			
+			
 		});
 		
 	}

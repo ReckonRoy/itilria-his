@@ -67,7 +67,7 @@
 			</h3>
 			<label>Username</label>
 			<input type="text" name="username" class="fields"> 
-			<input type="button" name="" value="submit" class="button-class" id="username-btn">
+			<input type="button" value="save" class="button-class" id="username-btn">
 		</form>
 
 		<form id="password-form" name="passwordform">
