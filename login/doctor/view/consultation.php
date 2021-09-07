@@ -85,6 +85,7 @@ TABLE CONTAINING PRESCRIPTION DETAILS
 			<div id="emr-record-div">
 							
 				</div>
+				<div></div>
 				<div id="emr-chargesheet">
 				<img src="" alt="placeholder+image" id="chargesheet-image">
 				<form>
