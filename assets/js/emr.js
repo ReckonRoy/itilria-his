@@ -93,15 +93,18 @@ let emr = {
 	content: function(container, record)
 	{
 		var table = document.createElement("table");
+		table.className = "emr_table";
 		var thead = document.createElement("thead");
 		var th = document.createElement("th");
 		th.setAttribute("id", "table-header");
 		th.colSpan = "2";
 		var empty_row = document.createElement("tr");
 		var empty_data = document.createElement("td");
+		empty_data.style.border = "none";
 		empty_row.appendChild(empty_data);
 		var empty_row2 = document.createElement("tr");
 		var empty_data2 = document.createElement("td");
+		empty_data2.style.border = "none";
 		empty_row2.appendChild(empty_data2);
 		th.appendChild(document.createTextNode("Electronic Medical Record"));
 		thead.appendChild(th);
@@ -218,9 +221,11 @@ let emr = {
 		//create next line
 		var empty_row = document.createElement("tr");
 		var empty_data = document.createElement("td");
+		empty_data.style.border = "none";
 		empty_row.appendChild(empty_data);
 		var empty_row2 = document.createElement("tr");
 		var empty_data2 = document.createElement("td");
+		empty_data2.style.border = "none";
 		empty_row2.appendChild(empty_data2);
 		tbody.appendChild(empty_row);
 		tbody.appendChild(empty_row2);

@@ -42,7 +42,7 @@ if(isset($_POST['patient_id']))
 }else if(isset($_POST['notes_pid']))
 {
     $patient_id = $_POST['notes_pid'];
-    $notes = $_POST['doctors_notes'];
+    $notes = nl2br($_POST['doctors_notes']);
     if(!empty($patient_id)){
         $doctor = new Doctor();
         $doctor->saveNotes($mysqli, $patient_id, $_SESSION['user_id'], $notes);
@@ -83,7 +83,7 @@ if(isset($_POST['patient_id']))
     }
 }else if(isset($_POST['presc_pid'])){
     $presc_pid = $_POST['presc_pid'];
-    $prescription = $_POST['prescription'];
+    $prescription = nl2br($_POST['prescription']);
     
     if(!empty($presc_pid)){
         $doctor = new Doctor();

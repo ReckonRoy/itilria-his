@@ -318,13 +318,27 @@ th, td{
 
 #emr-record-div{
 	border: 1px solid gray;
-	background-color: brown;
+	background-color: white;
 	width: 100%;
 	margin-left: 0%;
 	color: white;
 	border-radius: 15px;
 	overflow-x: auto;
 	font-size: 14px;
+	color: black;
+}
+
+.emr_table{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.emr_table td, th{
+	border: 1px solid black;
+}
+
+.empty_td{
+	border: none;
 }
 
 #emr-chargesheet{

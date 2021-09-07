@@ -55,7 +55,7 @@ TABLE CONTAINING PRESCRIPTION DETAILS
 						<th colspan="3" class="theadClass">Drugs Prescribed</th>
 					</tr>
 					<tr>
-						<td colspan="3" height="300" id="td-pat-presc" valign="top" class="drugs_prescribed">
+						<td colspan="3" height="300" id="td-pat-presc" style="white-space: pre-line;" valign="top" class="drugs_prescribed">
 							
 						</td>
 					</tr>
@@ -145,7 +145,7 @@ TABLE CONTAINING PRESCRIPTION DETAILS
 					<form id="notes-form" name="notes_form" class="ops-form">
 						<input type="hidden" name="notes_pid">
 						<label>Doctor's Notes</label>
-						<textarea name="doctors_notes" rows="5"></textarea>
+						<textarea name="doctors_notes" style="white-space: pre-wrap;" rows="5"></textarea>
 						<input type="button" id="savenotes-btn" class="save_btn" value="Save">
 					</form>
 				</div>
@@ -189,7 +189,7 @@ TABLE CONTAINING PRESCRIPTION DETAILS
 					<form id="prescription-form" name="prescription_form" class="ops-form">
 						<input type="hidden" name="presc_pid">
 						<label>Prescription</label>
-						<textarea name="prescription" rows="5"></textarea>
+						<textarea name="prescription" style="white-space: pre-wrap;"rows="5"></textarea>
 						<div id="prescription-control">
 						<input type="button" id="save-presc-btn" class="save_btn" value="Save">
 						<input type="button" id="print-prescription-btn" class="print_prescription" value="Print prescription">
@@ -197,6 +197,13 @@ TABLE CONTAINING PRESCRIPTION DETAILS
 						</div>
 					</form>
 				</div>
+				<!--
+				Notes:
+				usage -
+				stylye -> pre-wrap vs pre-line
+				pre-line-> sequence of whitespace will collapse. Text will 
+				wrap when necessary, and on line breaks
+				-->
 				<!------------------------------------------------------------------------------------------------------------>
 				
 			</div>

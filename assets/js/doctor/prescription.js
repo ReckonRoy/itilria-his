@@ -66,7 +66,7 @@ let prescriptionObject = {
 						prescriptionObject.p_addr.append(document.createTextNode(" "+result[1].address));
 						prescriptionObject.p_age.append(document.createTextNode(" "+result[1].age));
 						prescriptionObject.p_gender.append(document.createTextNode(" "+result[1].gender));
-						prescriptionObject.presc.append(document.createTextNode(" "+result[1].prescription));
+						prescriptionObject.presc.innerHTML = result[1].prescription;
 						prescriptionObject.presc_date.append(document.createTextNode(" "+result[1].prescription_date));
 						prescriptionObject.doc_name.append(document.createTextNode(" "+result[2].doctor));
 						console.log(result[2]);
