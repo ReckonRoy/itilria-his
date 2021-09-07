@@ -21,7 +21,7 @@
 			<div id="form-div">
 				<h2>Log In</h2>
 				<form name="login_form" id="login-form">
-					<label>Email</label>
+					<label>Email/Username</label>
 					<input type="email" name="email">
 					<label>Password</label>
 					<input type="password" name="password">

@@ -82,7 +82,11 @@ TABLE CONTAINING PRESCRIPTION DETAILS
 		?>
 <!----------------------------------------------------PATIENT EMR SECTION-------------------------------------------------------->
 		<div id="emr-container">
+			<!-- Patient Medical Record-->
 			<div id="emr-record-div"></div>
+
+			<!-- Patient Record List By dates -->
+			<div id="medical-r-d"></div>
 			<div id="emr-chargesheet">
 			<img src="" alt="placeholder+image" id="chargesheet-image">
 			<form>

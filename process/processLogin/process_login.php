@@ -6,7 +6,10 @@
         $password = htmlentities(strip_tags($_POST['password']));
         if(!empty($email) && !empty($password))
         {
-            $login = new Login($email, $password);
+            $login = new Login();
+            $login->setEmail($email);
+            $login->setPassword($password);
+            $login->setUsername($email);
             $login->queryDatabase($mysqli);
         }else{
             echo json_encode([false, "Please fill in all fields"]);
@@ -17,11 +20,20 @@
     class Login{
         private $email = null;
         private $password = null;
+        private $username = null;
         
-        function __construct($email, $password){
+        function setEmail($email){
             $this->email = $email;
+        }
+        
+        function setPassword($password){
             $this->password = $password;
         }
+        
+        function setUsername($username){
+            $this->username = $username;
+        }
+        
         function getEmail()
         {
             return $this->email;
@@ -31,9 +43,13 @@
         {
             return md5($this->password);
         }
+        
+        function getUsername(){
+            return $this->username;
+        }
         function queryDatabase($mysqli)
         {
-            $query = "SELECT id, role_id FROM credentials WHERE email='".$this->getEmail()."' AND password = '".$this->getPassword()."'";
+            $query = "SELECT id, role_id FROM credentials WHERE email='".$this->getEmail()."' OR username='".$this->getUsername()."' AND password = '".$this->getPassword()."'";
             $result = $mysqli->query($query);
             {
                 if($result->num_rows == 1){
