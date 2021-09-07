@@ -90,6 +90,19 @@ let emr = {
 
 	},
 
+	/**
+	 * prdc: patient record by date container
+	 * this function displays the patients records by date
+	 * it enables the user to select patient record based on a certain recorded date
+	 */
+	prd_container: function (argument) {
+		
+	}
+
+	/**
+	 * Content div: displays the patient file 
+	 * record is in tabular format
+	 */
 	content: function(container, record)
 	{
 		var table = document.createElement("table");

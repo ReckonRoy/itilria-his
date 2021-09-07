@@ -104,7 +104,7 @@ TABLE CONTAINING PRESCRIPTION DETAILS
 			
 				<div id="search-container"><!-- form for searching patient -->
 					<form id="search-form" name="doctor_search_form">
-						<input type="text" id="search-field" placeholder="Type here to begin search..." name="search_field">
+						<input type="text" id="search-field" placeholder="Please enter patient clinical ID" name="search_field">
 					</form>
 					<div id="search-results"><!-- div for resulta of search -->
 						<p>search results will appear hear</p>
