@@ -63,9 +63,8 @@
     function getInitials(){
         
         $nameInitial = substr($this->getName(), 0, 1);
-        $surnameInitial = substr($this->getSurname(), 0, 1);
         
-        return $nameInitial." ".$surnameInitial; 
+        return $nameInitial;
     }
     
     function update($mysqli, $search_arg){
