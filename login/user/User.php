@@ -1,6 +1,10 @@
 <?php 
     class User{
     private $id = null;
+    private $password = null;
+    private $current_pwd = null;
+    private $new_pwd = null;
+    private $confirm_pwd = null;
     private $name = null;
     private $surname = null;
     private $nationality = null;
@@ -11,12 +15,13 @@
     /*This class serves a purpose of getting the currently logged person general details or the person who is being search from the database */ 
     function getUserResults($mysqli, $id)
     {
-        $query = "SELECT * FROM user WHERE credential_id='".$id."'";
+        $query = "SELECT * FROM credentials AS c INNER JOIN user AS u ON c.id=u.credential_id INNER JOIN employee_details AS e ON c.id=e.credential_id WHERE c.id='".$id."'";
         $result = $mysqli->query($query);
         if($result->num_rows == 1)
         {
             $row = $result->fetch_array(MYSQLI_ASSOC);
             $this->id =$row['id'];
+            $this->password = $row['password'];
             $this->name = $row['name'];
             $this->surname = $row['surname'];
             $this->nationality = $row['nationality'];
@@ -25,6 +30,84 @@
         }
     }
     
+    function getEmployeeDetails($mysqli, $id)
+    {
+        $query = "SELECT * FROM credentials AS c INNER JOIN user AS u ON c.id=u.credential_id INNER JOIN employee_details AS e ON c.id=e.credential_id WHERE c.id='".$id."'";
+        $result = $mysqli->query($query);
+        if($result->num_rows == 1)
+        {
+            $row = $result->fetch_array(MYSQLI_ASSOC);
+            echo json_encode([true, $row, "userform"]);
+        }
+    }
+    
+    /*This class serves a purpose of getting the currently logged person general details or the person who is being search from the database */
+    function getCredPassword($mysqli, $id)
+    {
+        $query = "SELECT password FROM credentials WHERE id='".$id."'";
+        $result = $mysqli->query($query);
+        if($result->num_rows == 1)
+        {
+            $row = $result->fetch_array(MYSQLI_ASSOC);
+            $this->password = $row['password'];
+        }
+    }
+
+    function isPasswordValid()
+    {
+        //check if old password match
+        $current_pwd = md5($this->current_pwd);
+        if($this->password == $current_pwd)
+        {
+            return true;
+        }else{
+           return false;
+        }
+    }
+    
+    function confirmPassword()
+    {
+        if($this->new_pwd == $this->confirm_pwd)
+        {
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    function setPasswordProps($current_pwd, $new_pwd, $confirm_pwd)
+    {
+        $this->current_pwd = $current_pwd;
+        $this->new_pwd = $new_pwd;
+        $this->confirm_pwd = $confirm_pwd;
+    }
+    function changePassword($mysqli, $id)
+    {
+        //check if old password match
+        if($this->isPasswordValid() == true)
+        {
+       
+            //confirm if new_pwd == confirm_pwd
+            if ($this->confirmPassword() == true) {
+                //update password field
+                $this->password = md5($this->new_pwd);
+                $query = "UPDATE credentials SET password='".$this->password."' WHERE id='".$id."'";
+                $result = $mysqli->query($query);
+                if($result){
+                    echo json_encode([true, "Password has been successfuly changed.", "passwordform", "success"]);
+                }else {
+                    echo json_encode([false, "Sorry! Failed to change password.", "passwordform", "error"]);
+                }
+                
+            }else{
+                //passwords do not match
+                echo json_encode([false, "Sorry! passwords do not match.", "passwordform", "error"]);
+            }
+        }else{
+            //old password does not match
+            echo json_encode([false, "Sorry! passwords do not match", "passwordform", "error"]);
+        }
+    }
     function setUser($id, $name, $s, $n, $c, $a){
         $this->id = $id;
         $this->name = $name;
@@ -33,7 +116,9 @@
         $this->contact = $c;
         $this->address = $a; 
     }
-    
+    function getPassword(){
+        return $this->password;
+    }
     function getName(){
       return $this->name;
     }
