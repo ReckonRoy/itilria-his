@@ -42,19 +42,19 @@
 			General details about you
 			<hr>
 			</h3>
-			<input type="hidden" name="staff_id" value="<?php echo $_SESSION['user_id']; ?>">
+			<input type="hidden" name="staff_id" id="staff-id" value="<?php echo $_SESSION['user_id']; ?>">
 			<label>Name</label>
-			<input type="text" name="fname" class="fields">
+			<input type="text" name="fname" id="fname" class="fields">
 			<label>Surname</label>
-			<input type="text" name="lname" class="fields">
+			<input type="text" name="lname" id="lname" class="fields">
 			<label>Email</label>
-			<input type="email" name="email_addr" class="fields" >
+			<input type="email" name="email_addr" id="email_addr" class="fields" >
 			<label>Contact</label>
-			<input type="text" name="contact" class="fields">
+			<input type="text" name="contact" id="contact" class="fields">
 			<label>Profession</label>
-			<input type="text" name="profession" class="fields">
+			<input type="text" name="profession" id="profession" class="fields">
 			<label>Address</label>
-			<textarea id="address-field" name="address" class="textrea" cols="5" rows="3"></textarea>			
+			<textarea id="address-field" name="address" id="address" class="textrea" cols="5" rows="3"></textarea>			
 			<input type="button" value="update" class="button-class" id="update-btn">
 		</form>
 

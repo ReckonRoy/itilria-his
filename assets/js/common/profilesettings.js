@@ -8,6 +8,7 @@ let profileSettingsObject = {
 	close_btn: document.getElementById("close-btn"),
 	p_tag: document.getElementById("message"),
 	smp_div: document.getElementById("server-message-response"),
+	updateform: 'updateform',
 
 	createXHR: function()
 	{
@@ -46,6 +47,25 @@ let profileSettingsObject = {
 						+"&"+new_pwd.name+"="+new_pwd.value
 						+"&"+confirm_pwd.name+"="+confirm_pwd.value
 						);	
+				}else if(profileSettingsObject.updateform == "updateform")
+				{
+					var staff_id = document.getElementById('staff-id');
+					var fname = document.getElementById('fname');
+					var surname = document.getElementById('lname');
+					var email_addr = document.getElementById('email_addr');
+					var contact = document.getElementById('contact');
+					var profession = document.getElementById('profession');
+					var address = document.getElementById('address');
+
+					profileSettingsObject.xhr.send(
+						"update_id="+staff_id.value
+						+"&"+fname.name+"="+fname.value
+						+"&"+surname.name+"="+surname.value
+						+"&"+email_addr.name+"="+email_addr.value
+						+"&"+contact.name+"="+contact.value
+						+"&"+profession.name+"="+profession.value
+						+"&"+address.name+"="+address.value
+					);
 				}
 				
 
@@ -83,6 +103,8 @@ let profileSettingsObject = {
 						}else if(result[2] == "passwordform")
 						{
 							profileSettingsObject.container(profileSettingsObject.p_tag, result[1], result[3]);
+						}else if(result[2] == 'updateform'){
+							profileSettingsObject.container(profileSettingsObject.p_tag, result[1], result[3]);
 						}				
 					}
 				}catch(e){
@@ -117,14 +139,17 @@ let profileSettingsObject = {
 	{
 		profileSettingsObject.createXHR();
 		profileSettingsObject.passwordform.name = "";
+		profileSettingsObject.updateform = "";
 		profileSettingsObject.request();
 		
 		this.update_btn.addEventListener("click", function(){
 			
-			profileSettingsObject.passwordform.name = "updateform";
-			if(profileSettingsObject.passwordform.name == "updateform")
+			profileSettingsObject.updateform = "updateform";
+			if(profileSettingsObject.updateform == "updateform")
 			{
 				profileSettingsObject.passwordform.name = "";
+				profileSettingsObject.userform.name = "";
+				profileSettingsObject.request();
 			}
 		});
 		this.change_pwd_btn.addEventListener("click", function(){
@@ -133,6 +158,7 @@ let profileSettingsObject = {
 			if(profileSettingsObject.passwordform.name == "passwordform")
 			{
 				profileSettingsObject.userform.name = "";
+				profileSettingsObject.updateform = "";
 				profileSettingsObject.request();
 			}
 		});
