@@ -20,12 +20,20 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 	</head>
 	
 	<body>
-
+		<div id="overlay"></div>
 		<div id="container">
 		<?php	
 			require "./header.php";
 		?>	
 		<main>
+			<!-------------------------------------Server response message div----------------------------------------->
+			<div id="server-message-response">
+				<input type="button" id="close-btn" value="close">
+				<div class="clear_float"></div>
+				<p id="message">
+				</p>
+			</div>
+			<!--------------------------------------------------------------------------------------------------------->
 			<nav id="staff-nav">
 				<button id="register-tab">Register</button> | <button id="update-tab">Update</button> | <button id="delete-tab">Delete</button> | <button id="assign-tab">Assign post</button>
 			</nav>
@@ -36,32 +44,32 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 				<div id="reg-content-div">
 
 					<h2>Register new staff member</h2>
-					<form id="reg-form" action="../user/process_reg.php">
+					<form id="reg-form" name="register_form">
 						<label>Name</label>
-						<input type="text" class="field" name="name">
+						<input type="text" class="field" name="name_field"><label class="star-w">*</label>
 						<label>Last Name</label>
-						<input type="text" name="surname" class="field">
+						<input type="text" name="surname" class="field"><label class="star-w">*</label>
 						<label>Email</label>
-						<input type="email" name="email" class="field">
+						<input type="email" name="email" class="field"><label class="star-w">*</label>
 						<label>Contact</label>
-						<input type="text" name="contact" class="field">
+						<input type="text" name="contact" class="field"><label class="star-w">*</label>
 						<label>Profession</label>						
-						<input type="text" name="profession" class="field">
+						<input type="text" name="profession" class="field"><label class="star-w">*</label>
 						<label>Account Type</label>
-						<select name="account_type" id="a-t-s" class="field" >
+						<select name="account_type" id="a-t-s" class="field">
 							<option value="admin">Admin</option>
-							<option value="doctor" selected>Doctor</option>
+							<option value="doctor">Doctor</option>
 							<option value="nurse">Nurse</option>
 							<option value="receptionist">Receptionist</option>
-						</select>
-						<label>Practice Number</label>						
-						<input type="text" name="practice_number" class="field">
+						</select><label class="star-w">*</label>
+						<label>Practice</label>						
+						<input type="text" name="practice_number" class="field"><label class="star-w">*</label>
 						<label>Nationality</label>
-						<input type="text" name="nationality" class="field">
+						<input type="text" name="nationality" class="field"><label class="star-w">*</label>
 						<label>Start Date</label>
-						<input type="date" name="start_date" class="field">
+						<input type="date" name="start_date" class="field"><label class="star-w">*</label>
 						<label>Address</label>
-						<textarea name="address" rows="3" cols="40"></textarea>
+						<textarea name="address" rows="3" cols="40"></textarea><label class="star-w">*</label>
 						<input type="button" value="Register" id="reg-btn">
 					</form>
 				</div>

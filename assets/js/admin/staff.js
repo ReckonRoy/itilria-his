@@ -6,7 +6,12 @@ let tabs = {
 	reg_container: document.getElementById("reg-content-div"),
 	update_container: document.getElementById("update-content-div"),
 	delete_container: document.getElementById("delete-content-div"),
+	close_btn: document.getElementById("close-btn"),
+	p_tag: document.getElementById("message"),
+	errorm_div: document.getElementById("server-message-response"),
+	register_form: document.getElementById("reg-form"),
 	xhr: null,
+	register_btn: document.getElementById("reg-btn"),
 	url: null,
 
 	manageTabs: function()
@@ -63,39 +68,50 @@ let tabs = {
 
 	createXHR: function()
 	{
-		update.xhr = null;
+		tabs.xhr = null;
 		try{
-			update.xhr = new XMLHttpRequest();
+			tabs.xhr = new XMLHttpRequest();
 		}catch(e){
 			try{
-				update.xhr = new ActiveXObject("Microsoft.XMLHttp");
+				tabs.xhr = new ActiveXObject("Microsoft.XMLHttp");
 			}catch(e){}
 		}
 	},
 
 	request: function()
 	{
-		if(update.xhr)
+		if(tabs.xhr)
 		{
 			try{
-				update.url = "";
-				update.xhr.open("POST", update.url, true);
-				update.xhr.onreadystatechange = update.response;
-				update.xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+				
+				tabs.xhr.open("POST", tabs.url, true);
+				tabs.xhr.onreadystatechange = tabs.response;
+				tabs.xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-				var register_form = document.getElementById("");
-				var n = ;
-				var s;
-				var e;
-				var con;
-				var prof;
-				var acc_type;
-				var pr_n;
-				var nat;
-				var s_d;
-				var addr;
-
-				update.xhr.send("email=" + update.form.email.value);
+				if(tabs.register_form.name == "register_form"){
+					var n = tabs.register_form.name_field;
+					var s = tabs.register_form.surname;
+					var e = tabs.register_form.email;
+					var con = tabs.register_form.contact;
+					var prof = tabs.register_form.profession;
+					var acc_type = tabs.register_form.account_type;
+					var pr_n = tabs.register_form.practice_number;
+					var nat = tabs.register_form.nationality;
+					var s_d = tabs.register_form.start_date;
+					var addr = tabs.register_form.address;
+					tabs.xhr.send(
+						n.name+"="+n.value
+						+"&"+s.name+"="+s.value
+						+"&"+e.name+"="+e.value
+						+"&"+con.name+"="+con.value
+						+"&"+prof.name+"="+prof.value
+						+"&"+acc_type.name+"="+acc_type.value
+						+"&"+pr_n.name+"="+pr_n.value
+						+"&"+nat.name+"="+nat.value
+						+"&"+s_d.name+"="+s_d.value
+						+"&"+addr.name+"="+addr.value
+					);
+				}
 
 				document.body.style.cursor = "wait";
 			}catch(e){
@@ -108,25 +124,54 @@ let tabs = {
 	response: function()
 	{
 		//check if request is complete
-		if(update.xhr.readyState == 4){
+		if(tabs.xhr.readyState == 4){
 			document.body.style.cursor = "default";
-			if(update.xhr.status == 200){
+			if(tabs.xhr.status == 200){
 				try{
-					let result = JSON.parse(update.xhr.responseText);
+					let result = JSON.parse(tabs.xhr.responseText);
 					if(result[0] == false)
 					{
-
+						tabs.container(tabs.p_tag, result[1]);
 					}else if(result[0] == true){					
-
+						tabs.container(tabs.p_tag, result[1]);
 					}
 				}catch(e){
 					alert("error reading response: " + e.toString());
 				}
 			}else{
-				alert(update.xhr.statusText);
+				alert(tabs.xhr.statusText);
 				document.body.style.cursor = "default";
 			}
 		}
+	},
+
+	run: function(){
+		this.createXHR();
+		tabs.register_btn.addEventListener("click", function(){
+			//re-assign url
+			tabs.url = "../user/process_reg.php";
+			//initialise register form and set all other forms to empty
+			if(tabs.register_form.name == "register_form"){
+				tabs.request();
+			}
+		});
+	},
+
+	container: function(p_tag, message){
+		var overlay = document.getElementById("overlay");
+		p_tag.innerHTML = "";
+		overlay.style.display = "block";
+		tabs.errorm_div.style.display = "none";
+		if (tabs.errorm_div.style.display == "none"){
+
+			tabs.errorm_div.style.display = "block";
+		}
+		
+		p_tag.appendChild(document.createTextNode(message));
+		tabs.close_btn.addEventListener("click", function(){
+			overlay.style.display = "none";
+			tabs.errorm_div.style.display = "none";
+		});
 	},
 	
 }
@@ -137,3 +182,4 @@ searchEmail_field.addEventListener("focus", function(){
 });
 
 tabs.manageTabs();
+tabs.run();

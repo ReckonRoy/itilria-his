@@ -8,8 +8,8 @@ require '../../config/config.php';
 require '../company/Company.php';
 require '../RolesPermissions.php';
 
-if(isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['email']) && isset($_POST['contact']) && isset($_POST['profession']) && isset($_POST['practice_number']) && isset($_POST['nationality']) && isset($_POST['start_date']) && isset($_POST['address'])){
-    $name = htmlentities(strip_tags($_POST['name']));
+if(isset($_POST['name_field'])){
+    $name = $_POST['name_field'];
     $surname = htmlentities(strip_tags($_POST['surname']));
     $email = htmlentities(strip_tags($_POST['email']));
     $contact = htmlentities(strip_tags($_POST['contact']));
@@ -21,16 +21,20 @@ if(isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['email']) &
     $formatedHireDate = date('Y-m-d', strtotime($originalDate));
     $address = htmlentities(strip_tags($_POST['address']));
     $password = "12345678";
+    if(!empty($name)){
     
-    
-    $company = new Company($mysqli, $_SESSION['user_id']);
-    $rolespermissions = new RolesPermissions($account_type); 
-    $rolespermissions->getRoleFromDB($mysqli);
-    $register = new Register($email, $account_type, $password, $rolespermissions->getRoleID(), $company->getCompanyID());
-    $register->setUser($name, $surname, $contact, $nationality, $address);
-    $register->setEmployeeDetails($profession, $practice_number, $formatedHireDate);
-    $register->processQuery($mysqli);
-    echo $register->getMessage();
+            $company = new Company($mysqli, $_SESSION['user_id']);
+            $rolespermissions = new RolesPermissions($account_type); 
+            $rolespermissions->getRoleFromDB($mysqli);
+            $register = new Register($email, $account_type, $password, $rolespermissions->getRoleID(), $company->getCompanyID());
+            $register->setUser($name, $surname, $contact, $nationality, $address);
+            $register->setEmployeeDetails($profession, $practice_number, $formatedHireDate);
+            $register->processQuery($mysqli);
+    }else{
+        echo json_encode([false, "Please fill in all required fields denoted by a *"]);
+    }
+}else{
+    echo json_encode([false, "Please fill in all required fields denoted by a *"]);
 }
 
 class Register{

@@ -81,7 +81,6 @@ let patient = {
 					let result = JSON.parse(patient.xhr.responseText);
 					if(result[0] == false)
 					{
-						console.log(result[0]);
 						console.log(result[1]);
 					}else if(result[0] == true){	
 						if(result[3] == "notes")

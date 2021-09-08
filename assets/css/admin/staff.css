@@ -1,4 +1,52 @@
 /*----------------------------------------------------------------------------------------------------------
+overlay, server response dialg dialog 
+-----------------------------------------------------------------------------------------------------------*/
+#overlay{
+	display: none;
+	position: absolute;
+	width:  100%;
+	height: 100vh;
+	background-color: black;
+	opacity: 0.8;
+}
+#server-message-response{
+	display: none;
+	position: absolute;
+	width: 40%;
+	border: 2px solid red;
+	color: red;
+	border-radius: 10px;
+	margin-left: 30%;
+	height: 200px;
+	background-color: white;
+}
+#close-btn{
+	border: 1px solid red;
+	color: red;
+	width: 60px;
+	float: right;
+	border-radius: 25px;
+	margin-right: 10px;
+	margin-top: 5px;
+	padding: 5px;
+	box-sizing: border-box;
+	font-weight: bold;
+}
+#close-btn:hover{
+	color: white;
+	background-color: red;
+	cursor: pointer;
+}
+
+#message{
+	box-sizing: border-box;
+	padding: 10px 16px;
+}
+
+.clear_float{
+	clear: both;
+}
+/*----------------------------------------------------------------------------------------------------------
 staff regitration style section
 ----------------------------------------------------------------------------------------------------------*/
 #staff-nav{
@@ -40,12 +88,19 @@ staff regitration style section
 #reg-form{
 	display: grid;
 	width: 70%;
-	grid-template-columns: 30% 70%;
-	margin-left: 25%;
+	grid-template-columns: 20% 68% 2%;
+	margin-left: 15%;
 	grid-row-gap: 1.5em;
+	grid-column-gap: 1em;
 	box-sizing: border-box;
 	padding: 20px 14px;
 	border: 1px solid grey;
+	background-color: grey;
+	border-radius: 10px;
+}
+
+.star-w{
+	color: white;
 }
 
 #reg-form > label{
