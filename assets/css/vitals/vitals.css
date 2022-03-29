@@ -1,3 +1,63 @@
+/*----------------------------------------------------------------------------------------------------------
+overlay, server response dialog dialog 
+-----------------------------------------------------------------------------------------------------------*/
+#overlay{
+	display: none;
+	position: absolute;
+	width:  100%;
+	height: 100vh;
+	background-color: black;
+	opacity: 0.8;
+	z-index: 20;
+}
+
+.error{
+	border: 2px solid red;
+	color: red;
+}
+
+.success{
+	border: 2px solid green;
+	color: green;
+}
+
+#server-message-response{
+	display: none;
+	position: absolute;
+	width: 40%;
+	border-radius: 10px;
+	margin-left: 30%;
+	height: 200px;
+	background-color: white;
+	z-index: 999;
+}
+#close-btn{
+	border: 1px solid red;
+	color: red;
+	width: 60px;
+	float: right;
+	border-radius: 25px;
+	margin-right: 10px;
+	margin-top: 5px;
+	padding: 5px;
+	box-sizing: border-box;
+	font-weight: bold;
+}
+#close-btn:hover{
+	color: white;
+	background-color: red;
+	cursor: pointer;
+}
+
+#message{
+	box-sizing: border-box;
+	padding: 10px 16px;
+}
+
+.clear_float{
+	clear: both;
+}
+/*-----------------------------------------------------------------------------------------------------------------------*/
 #notification-div{
 	width: 100%;
 	position: absolute;

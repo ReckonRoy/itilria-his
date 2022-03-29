@@ -99,10 +99,10 @@ class Vitals{
             {
                 $all_rows[] = $row;
             }
-            echo json_encode([true, $all_rows]);
+            echo json_encode([true, $all_rows, "success"]);
         }else{
             $this->error_msg .= "PatientId does not exist!".$mysqli->error;
-            echo json_encode([false, $this->getErrorMsg()]);
+            echo json_encode([false, $this->getErrorMsg(), "error"]);
         }
     }
     
@@ -113,10 +113,10 @@ class Vitals{
         if($result)
         {
             $this->success_msg = "Vitals for patient {$this->getPatientName()} {$this->getPatientSurname()} have been succesfuly saved!";
-            echo json_encode([true, $this->getSuccessMsg(), "success_class"]);
+            echo json_encode([true, $this->getSuccessMsg(), "success"]);
         }else{
             $this->error_msg .= "Something went terribly wrong! please contact support at support@itilria.co.za".$mysqli->error;
-            echo json_encode([false, $this->getErrorMsg(), "error_class"]);
+            echo json_encode([false, $this->getErrorMsg(), "error"]);
         }
     }
     /**

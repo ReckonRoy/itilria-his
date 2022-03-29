@@ -29,7 +29,7 @@ if(isset($_POST['patient_id']))
         $vitals->saveVitals($mysqli, $patient_id);
         
     }else{
-        echo json_encode([false, "Please fill in all fields". "error_class"]);        
+        echo json_encode([false, "Please fill in all fields", "error"]);        
     }
 }
 ?>

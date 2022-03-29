@@ -20,10 +20,20 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 <link rel="stylesheet" href="../../../assets/css/vitals/vitals.css" type="text/css">
 </head>
 <body>
+	<!--NOTIFICATIONS
 	<div id="notification-div">
 		<div id="n-c-d"></div>
 	</div>
 	<div id="container">
+	-->
+
+	<div id="overlay"></div>
+	<div id="server-message-response">
+		<input type="button" id="close-btn" value="close">
+		<div class="clear_float"></div>
+		<p id="message"></p>
+	</div>
+	
 	<?php	
 		require "./header.php";
 	?>
@@ -84,7 +94,8 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 	<footer></footer>
 </div>
 <script type="text/javascript" src="../../../assets/js/search.js"></script>	
-<script type="text/javascript" src="../../../assets/js/nurse/nurse.js"></script>	
+<script type="text/javascript" src="../../../assets/js/nurse/nurse.js"></script>
+<script type="text/javascript" src="../../../assets/js/nurse/main.js"></script>		
 <script type="text/javascript">
 	var profile_m_div = document.getElementById("profile-menu-div");
 	var avatar = document.getElementById("avatar-div");

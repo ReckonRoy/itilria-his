@@ -1,5 +1,5 @@
 <header>
-	<nav id="main-nav"><div><a href="./appointments.php">Appointments</a> &nbsp; <a href="./consultation.php">Consultation</a></div>
+	<nav id="main-nav">
 		<div id="avatar-pdiv">
 			<div id="avatar-div">
 				<?php echo $user->getInitials() ;?>

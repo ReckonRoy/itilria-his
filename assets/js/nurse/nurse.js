@@ -5,7 +5,11 @@ let saveVitals = {
 	url: null,
 	vitals_btn: document.getElementById("vitals-btn"),
 	vitals_form: document.getElementById("vitals-form"),
-	notification_div: document.getElementById("notification-div"),
+	//notification_div: document.getElementById("notification-div"),
+	close_btn: document.getElementById("close-btn"),
+	vitals_div: document.getElementById("vitals-div"),
+	p_tag: document.getElementById("message"),
+	smp_div: document.getElementById("server-message-response"),
 	n_c_d: document.getElementById("n-c-d"),
 	createXHR: function()
 	{
@@ -69,9 +73,9 @@ let saveVitals = {
 					let result = JSON.parse(saveVitals.xhr.responseText);
 					if(result[0] == false)
 					{
-						saveVitals.content(saveVitals.n_c_d, result[1], result[2]);
+						saveVitals.container(saveVitals.p_tag, result[1], result[2]);
 					}else if(result[0] == true){					
-						saveVitals.content(saveVitals.n_c_d, result[1], result[2]);
+						saveVitals.container(saveVitals.p_tag, result[1], result[2]);
 					}
 				}catch(e){
 					alert("error reading response: " + e.toString());
@@ -84,28 +88,37 @@ let saveVitals = {
 	},
 
 	runVitals: function(){
-		saveVitals.notification_div.style.display = "none";
+		//saveVitals.notification_div.style.display = "none";
 		saveVitals.createXHR();
 		saveVitals.vitals_btn.addEventListener("click", function(){
 			saveVitals.request();
 		});
 	},
 
-	content: function(container, message, class_state){
-		saveVitals.notification_div.className = class_state;
-
-		if(saveVitals.notification_div.style.display == "none"){
-			saveVitals.notification_div.style.display = "block";
-		}
+	container: function(p_tag, message, class_state){
+		var overlay = document.getElementById("overlay");
+		p_tag.innerHTML = "";
 		
-		setInterval(function(){
-			if(saveVitals.notification_div.style.display == "block")
-			{
-				saveVitals.notification_div.style.display = "none";
-			}
-		}, 5000);
-		container.textContent = message;
-	}
+		saveVitals.smp_div.className = class_state;
+		saveVitals.smp_div.style.display = "none";
+		overlay.style.display = "none";
+		if (saveVitals.smp_div.style.display == "none"){
+			overlay.style.display = "block";
+			saveVitals.smp_div.style.display = "block";
+		}
+		//position pop-up in appropriate place in relation to the meeting divs 
+        var calcDiv1_geom = saveVitals.vitals_div.clientHeight / 2;
+        var calcDiv2_geom = saveVitals.smp_div.clientHeight / 2;
+      	var process_geom = ((saveVitals.vitals_div.offsetTop + saveVitals.vitals_div.clientHeight) - (calcDiv1_geom + calcDiv2_geom) - 500);
+        saveVitals.smp_div.style.top = process_geom + "px";
+		window.scrollTo(0, saveVitals.vitals_div.offsetTop);
+		
+		p_tag.appendChild(document.createTextNode(message));
+		saveVitals.close_btn.addEventListener("click", function(){
+			overlay.style.display = "none";
+			saveVitals.smp_div.style.display = "none";
+		});
+	},
 	
 }
 
