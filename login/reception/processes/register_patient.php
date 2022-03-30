@@ -3,10 +3,10 @@ session_start();
 require '../../../config/config.php';
 require '../processes/Patient.php';
 
-if(isset($_POST['name'])){
+if(isset($_POST['name']) && isset($_POST['gender'])){
     $name = $_POST['name'];
     $surname = $_POST['surname'];
-    $gender = $_POST['sex'];
+    $gender = $_POST['gender'];
     $dob = $_POST['dob'];
     $contact = $_POST['contact'];
     $nationality = $_POST['nationality'];
@@ -36,7 +36,9 @@ if(isset($_POST['name'])){
         $patient->setPEC($pec, $allergies);
         $patient->register($mysqli);
         $patient->getError();
+    }else{
+        echo "Please fill in all fields";
     }
 }else{
-    echo "some fields are not set";
+    echo "Please fill in all fields";
 }

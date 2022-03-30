@@ -35,11 +35,12 @@
 				<input type="text" name="name" id="patient_name" class="fields" placeholder="Please enter patient's name">
 				<label for="lastname">Last name</label>
 				<input type="text" name="surname" id="lastname" class="fields" placeholder="Please enter patient's surname">
-				<fieldset id="gender_div">
-					<legend>Gender</legend>
-					<label for="female">Female</label><input type="radio" name="sex" value="female" id="female">
-					<label for="male">Male</label><input type="radio" name="sex" value="male" id="male">
-				</fieldset>
+				<div id="gender_div">
+					<label for="female">Female</label>
+					<input type="radio" name="gender" value="female" id="female">
+					<label for="male">Male</label>
+					<input type="radio" name="gender" value="male" id="male">
+				</div>
 				<label for="patient_dob">Date of birth</label>
 				<input type="date" class="fields" id="patient_dob" name="dob">
 				<label for="patient-cont">contact</label>
