@@ -121,25 +121,6 @@
 </main>
 
 <script type="text/javascript" src="../../../assets/js/reception/main.js"></script>
-<script type="text/javascript">
-			var profile_m_div = document.getElementById("profile-menu-div");
-			var avatar = document.getElementById("avatar-div");
-			var logout_btn = document.getElementById("logout-btn");
-			profile_m_div.style.display = "none";
-			
-			avatar.addEventListener("click", function(){
-				if(profile_m_div.style.display == "none")
-				{
-					profile_m_div.style.display = "block";
-				}else{
-					profile_m_div.style.display = "none";
-				}
-			});
-			
-			logout_btn.onclick = function()
-			{
-				window.location.href = "../../logout.php";
-			};
-		</script>	
+<script type="text/javascript" src="../../../assets/js/reception/reception.js"></script>	
 </body>
 </html>

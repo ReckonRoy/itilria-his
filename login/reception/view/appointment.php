@@ -133,6 +133,7 @@
 	</div>
 </main>
 
+<script type="text/javascript" src="../../../assets/js/reception/main.js"></script>
 <script type="text/javascript" src="../../../assets/js/reception/schedule.js"></script>	
 <script type="text/javascript">
 			var profile_m_div = document.getElementById("profile-menu-div");
