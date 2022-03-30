@@ -19,10 +19,15 @@
 }
 
 #form_div{
+	padding: 16px;
+	box-sizing: border-box;
 	display: block;
 	width: 80%;
 	margin-left: 10%;
 	font-family: monospace;
+	background-color: lightgray;
+	color: gray;
+	border-radius: 25px;
 }
 
 #form_div form{
@@ -35,14 +40,19 @@
 
 .fields{
 	padding: 7px 0;
+	border-radius: 10px;
 }
 
 #basic-det{
 	display: grid;
 	border: 1px solid gray;
+	box-sizing: border-box;
+	border-radius: 10px;
+	padding: 10px;
 	grid-column: 1/3;
 	grid-template-columns: 1fr 1fr;
 	grid-row-gap: 5px;
+	margin-top: 20px;
 }
 
 #age{
@@ -71,6 +81,11 @@
 }
 
 #medical-cond{
+	margin-top: 30px;
+	border: 1px solid gray;
+	box-sizing: border-box;
+	border-radius: 10px;
+	padding: 10px;
 	display: grid;
 	grid-column: 1/3;
 	grid-template-columns: 1fr 1fr;
@@ -91,9 +106,13 @@
 #nok{
 	display: grid;
 	position: relative;
+	margin-top: 30px;
+	border: 1px solid gray;
+	box-sizing: border-box;
+	border-radius: 10px;
+	padding: 10px;
 	grid-template-columns: 1fr 1fr;
 	grid-column: 1/3;
-	border: 1px solid gray;
 	grid-row-gap: 5px;
 }
 
@@ -148,6 +167,8 @@
 }
 
 #reg_btn{
+	margin-top: 40px;
+	margin-bottom: 20px;
 	grid-column: 1/3;
 	text-align: center;
 	padding: 10px;
@@ -159,4 +180,11 @@
 	font-family: sans-serif;
 	border: 1px solid gray;
 	border-radius: 5px;
+}
+
+#reg_btn:hover{
+	cursor: pointer;
+	outline: 1px solid blue;
+	border: 1px solid white;
+	color: lightgray;
 }
