@@ -19,6 +19,13 @@
 </head>
 <body>
 
+	<div id="overlay"></div>
+	<div id="server-message-response">
+		<input type="button" id="close-btn" value="close">
+		<div class="clear_float"></div>
+		<p id="message"></p>
+	</div>
+
 <?php
 	require './header.php';
 ?>
@@ -29,10 +36,10 @@
 <main id="">
 	<h2 id="main-header">Patient Profile Registration Form</h2>
 	<div id="form_div">
-		<form method="POST" action="../processes/register_patient.php">
+		<form name="addPatient_form" id="add-patient-form">
 			<fieldset id="basic-det">
 				<label for="patient_name">Name</label>
-				<input type="text" name="name" id="patient_name" class="fields" placeholder="Please enter patient's name">
+				<input type="text" name="patient_name" id="patient_name" class="fields" placeholder="Please enter patient's name">
 				<label for="lastname">Last name</label>
 				<input type="text" name="surname" id="lastname" class="fields" placeholder="Please enter patient's surname">
 				<div id="gender_div">
@@ -49,8 +56,10 @@
 				<input type="text" class="fields" name="nationality" id="nationality">
 				<label for="citizen-id">National ID</label>
 				<input type="text" name="citizen_id" class="fields" id="citizen-id">
-				<label for="occupation">Occupation</label><input class="fields" type="text" name="occupation" id="occupation" placeholder="Occupation">
-				<label for="address">Address</label><textarea rows="3" cols="40" name="address" placeholder="Enter patients address here"></textarea>
+				<label for="occupation">Occupation</label>
+				<input class="fields" type="text" name="occupation" id="occupation" placeholder="Occupation">
+				<label for="address">Address</label>
+				<textarea rows="3" cols="40" name="address" placeholder="Enter patients address here"></textarea>
 			</fieldset>
 			<!--
 			<fieldset id="marital_status">
@@ -89,7 +98,8 @@
 				<label for="nok-id">Identity Number</label>
 				<input type="text" name="nok_id" id="nok-id" class="fields">
 				<label for="nok-rel">Relationship</label>
-				<div id="nd-parent"><input type="text" name="nok_rel" id="nok-rel" class="fields">
+				<div id="nd-parent">
+					<input type="text" name="nok_rel" id="nok-rel" class="fields">
 				<div id="nok-dropdown">
 					<ol id="rel-ol">
 						<li>Brother</li>
@@ -116,7 +126,7 @@
 				<textarea name="employers_address" id="emp_addr" rows="3" cols="40"></textarea>
 			</fieldset>
 			-->
-			<button id="reg_btn">Register Patient</button>
+			<input type="button" id="reg_btn" value="Register Patient">
 		</form>
 	</div>
 </main>

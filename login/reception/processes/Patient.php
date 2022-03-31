@@ -153,7 +153,7 @@ class Patient{
         if(!$result)
         {
             $this->error_msg .= "error while trying to save data, Please contact support@itilria.co.za for assistance".$mysqli->error;
-            echo $this->error_msg;
+            echo json_encode([false, $this->error_msg, "error"]);
         }
     }
     /*****************************************************************************************************************************/
@@ -181,7 +181,7 @@ class Patient{
         if(!$result)
         {
             $this->error_msg .= "error while trying to save data, Please contact support@itilria.co.za for assistance".$mysqli->error;
-            echo $this->error_msg;
+            echo json_encode([false, $this->error_msg, "error"]);
         }
     }
     /****************************************************************************************************************************/
@@ -205,18 +205,21 @@ class Patient{
                 $query = "UPDATE patient SET patient_id='".$this->getPatientID()."' WHERE name='".$this->getName()."' AND surname='".$this->getSurname()."'";
                 $result = $mysqli->query($query);
                 if(!$result){
-                    echo  $this->error_msg .= "error while trying to save data, Please contact support@itilria.co.za for assistance".$mysqli->error;
+                    $this->error_msg .= "error while trying to save data, Please contact support@itilria.co.za for assistance".$mysqli->error;
+                    echo json_encode([false, $this->error_msg, "error"]);
                 }
                 //run other mysql insertions
                 $this->registerNok($mysqli, $this->getPatientID());
                 $this->insertPec($mysqli, $this->getPatientID());
             }else {
-                echo $this->error_msg .= "error while trying to save data, Please contact support@itilria.co.za for assistance".$mysqli->error;
+                $this->error_msg .= "error while trying to save data, Please contact support@itilria.co.za for assistance";
+                echo json_encode([false, $this->error_msg, "error"]);
             }
-            echo "success";
+            $message = "Patient has been successfuly registered";
+            echo json_encode([true, $message, "success"]);
         }else{
-            $this->error_msg .= "error while trying to save data, Please contact support@itilria.co.za for assistance".$mysqli->error;
-            echo $this->error_msg;
+            $this->error_msg .= "error while trying to save data, Please contact support@itilria.co.za for assistance";
+            echo json_encode([false, $this->error_msg, "error"]);
         }
     }
     

@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../../../config/config.php';
-require '../processes/Patient.php';
+require './Patient.php';
 
 if(isset($_POST['name']) && isset($_POST['gender'])){
     $name = $_POST['name'];
@@ -37,8 +37,8 @@ if(isset($_POST['name']) && isset($_POST['gender'])){
         $patient->register($mysqli);
         $patient->getError();
     }else{
-        echo "Please fill in all fields";
+        echo json_encode([false, "Please fill in all fields", "error"]);
     }
 }else{
-    echo "Please fill in all fields";
+    echo json_encode([false, "Please fill in all fields", "error"]);
 }
