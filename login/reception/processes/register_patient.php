@@ -4,7 +4,7 @@ require '../../../config/config.php';
 require './Patient.php';
 
 if(isset($_POST['name']) && isset($_POST['gender'])){
-    $name = $_POST['name'];
+    $name = $_POST['patient_name'];
     $surname = $_POST['surname'];
     $gender = $_POST['gender'];
     $dob = $_POST['dob'];
