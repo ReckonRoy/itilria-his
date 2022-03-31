@@ -135,26 +135,7 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 		<script type="text/javascript" src="../../../assets/js/search.js"></script>
 		<script type="text/javascript" src="../../../assets/js/vitals.js"></script>
 		<script type="text/javascript" src="../../../assets/js/doctor/doctor.js"></script>
+		<script type="text/javascript" src="../../../assets/js/doctor/main.js"></script>
 		<script type="text/javascript" src="../../../assets/js/emr.js"></script>
-		<script type="text/javascript">
-			var profile_m_div = document.getElementById("profile-menu-div");
-			var avatar = document.getElementById("avatar-div");
-			var logout_btn = document.getElementById("logout-btn");
-			profile_m_div.style.display = "none";
-			
-			avatar.addEventListener("click", function(){
-				if(profile_m_div.style.display == "none")
-				{
-					profile_m_div.style.display = "block";
-				}else{
-					profile_m_div.style.display = "none";
-				}
-			});
-			
-			logout_btn.onclick = function()
-			{
-				window.location.href = "../../logout.php";
-			};
-		</script>
 	</body>
 </html>
