@@ -3,7 +3,7 @@ session_start();
 require '../../../config/config.php';
 require './Patient.php';
 
-if(isset($_POST['name']) && isset($_POST['gender'])){
+if(isset($_POST['patient_name']) && isset($_POST['gender'])){
     $name = $_POST['patient_name'];
     $surname = $_POST['surname'];
     $gender = $_POST['gender'];
