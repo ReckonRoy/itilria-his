@@ -50,9 +50,9 @@ let addPatientObject = {
 				var nok_rel = addPatientObject.patient_form.nok_rel;
 				var nok_address = addPatientObject.patient_form.nok_address;
 				addPatientObject.xhr.send(
-					+"&"+p_name.name+"="+p_name.value
+					p_name.name+"="+p_name.value
 					+"&"+surname.name+"="+surname.value
-					+"&"+gender.name+"="+gender.value
+					+"&"+"gender"+"="+gender.value
 					+"&"+dob.name+"="+dob.value
 					+"&"+contact.name+"="+contact.value
 					+"&"+nationality.name+"="+nationality.value
