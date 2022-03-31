@@ -57,6 +57,7 @@ let addPatientObject = {
 					+"&"+contact.name+"="+contact.value
 					+"&"+nationality.name+"="+nationality.value
 					+"&"+citizen_id.name+"="+citizen_id.value
+					+"&"+occupation.name+"="+occupation.value
 					+"&"+address.name+"="+address.value
 					+"&"+pec.name+"="+pec.value
 					+"&"+allergies.name+"="+allergies.value

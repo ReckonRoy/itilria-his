@@ -38,8 +38,8 @@
 	<div id="form_div">
 		<form name="addPatient_form" id="add-patient-form">
 			<fieldset id="basic-det">
-				<label for="patient_name">Name</label>
-				<input type="text" name="patient_name" id="patient_name" class="fields" placeholder="Please enter patient's name">
+				<label for="patient-name">Name</label>
+				<input type="text" name="patient_name" id="patient-name" class="fields" placeholder="Please enter patient's name">
 				<label for="lastname">Last name</label>
 				<input type="text" name="surname" id="lastname" class="fields" placeholder="Please enter patient's surname">
 				<div id="gender_div">
