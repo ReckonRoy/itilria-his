@@ -103,7 +103,7 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 				<div id="patient-details"></div>
 				<div id="control-div">
 					<!--EMR, Request -Controls- -->
-					<button id="emr-btn">EMR</button>
+					<button id="emr-btn">EMR</button><input type="button" value="Chargesheet">
 
 				</div>
 				<div id="c-container">
