@@ -60,13 +60,13 @@ if(isset($_POST['patient_id']))
     }else{
         echo json_encode(['false', "please select a patient", "error"]);
     }
-}else if(isset($_POST['plan_pid'])){
-    $plan_pid = $_POST['plan_pid'];
-    $plan = $_POST['plan'];
+}else if(isset($_POST['injections_pid'])){
+    $injections_pid = $_POST['injections_pid'];
+    $injections = $_POST['injections'];
     
-    if(!empty($plan_pid)){
+    if(!empty($injections_pid)){
         $doctor = new Doctor();
-        $doctor->savePlan($mysqli, $plan_pid, $_SESSION['user_id'], $plan);
+        $doctor->saveInjections($mysqli, $injections_pid, $_SESSION['user_id'], $injections);
     }else{
         echo json_encode(['false', "please select a patient", "error"]);
     }
@@ -77,7 +77,7 @@ if(isset($_POST['patient_id']))
     
     if(!empty($proc_pid)){
         $doctor = new Doctor();
-        $doctor->saveProcedures($mysqli, $proc_pid, $_SESSION['user_id'], $investigation, $procedures);
+        $doctor->saveProcedures($mysqli, $proc_pid, $_SESSION['user_id'], $procedures, $investigation, );
     }else{
         echo json_encode(['false', "please select a patient", "error"]);
     }

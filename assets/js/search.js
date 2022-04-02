@@ -103,8 +103,8 @@ let search = {
 				var assesment_form= document.getElementById("assesment-form");
 				assesment_form.asses_pid.value = p_id;
 
-				var plan_form = document.getElementById("plan-form");
-				plan_form.plan_pid.value = p_id;
+				var injections_form = document.getElementById("injections-form");
+				injections_form.injections_pid.value = p_id;
 
 				var procedures_form = document.getElementById("procedures-form");
 				procedures_form.proc_pid.value = p_id;

@@ -21,7 +21,7 @@ class Doctor{
     private $patient_surname = null;
     private $doctor_notes = null;
     private $assement_array = array();
-    private $plan_array = array();
+    private $injections_array = array();
     private $procedures_array = array();
     private $prescription_array = array();
     private $allresults_array = array();
@@ -47,7 +47,7 @@ class Doctor{
     }
     
     function getMergedArrays(){
-        return $this->allresults_array = array_merge($this->patient_array, $this->nurse_array, $this->vitals_array, $this->employee_details_array, $this->doctor_array, $this->assement_array, $this->plan_array, $this->procedures_array, $this->prescription_array);
+        return $this->allresults_array = array_merge($this->patient_array, $this->nurse_array, $this->vitals_array, $this->employee_details_array, $this->doctor_array, $this->assement_array, $this->injections_array, $this->procedures_array, $this->prescription_array);
     }
     
     function getPatientID(){
@@ -245,27 +245,27 @@ class Doctor{
     /***********************************************************************************************************************************************/
     /***********************************************************************************************************************************************/
     
-    function querySelectPlan($mysqli, $p_id)
+    function querySelectInjections($mysqli, $p_id)
     {
         $query = "SELECT * FROM plan WHERE patient_id='".$p_id."' ORDER BY date DESC";
         $result = $mysqli->query($query);
         if($result->num_rows != 0)
         {
             $row = $result->fetch_array(MYSQLI_ASSOC);
-            $this->plan_array = $row;
-            //$plan = $row['plan'];
+            $this->injections_array = $row;
+            //$injections = $row['injections'];
             //$staff_id = $row['staff_id'];
             //$time = $row['time'];
             //$date = $row['date'];
             
             //if there is processing needed create an array that will save the processed in put
-            //echo json_encode([true], $plan, $staff_id, $time, $date);
+            //echo json_encode([true], $injections, $staff_id, $time, $date);
         }else{
-            echo joson_encode([false, "No record of symptoms and signs found"], "assesment");
+            echo joson_encode([false, "No record of symptoms and signs found"], "injections");
         }
     }
     /***********************************************************************************************************************************************/
-    //get Assesment values
+    //get Procedures values
     function querySelectProcedures($mysqli, $p_id)
     {
         $query = "SELECT * FROM investigations WHERE patient_id='".$p_id."' ORDER BY date DESC";
@@ -366,12 +366,12 @@ class Doctor{
     /************************************************************************************************************************************************/
     
     /************************************************************************************************************************************************/
-    function savePlan($mysqli, $p_id, $s_id, $plan)
+    function saveInjections($mysqli, $p_id, $s_id, $injections)
     {
-        $query = "INSERT INTO plan(patient_id, staff_id, plan, date, time) VALUES('".$p_id."', '".$s_id."','".$plan."', CURDATE(), CURTIME())";
+        $query = "INSERT INTO plan(patient_id, staff_id, injections, date, time) VALUES('".$p_id."', '".$s_id."','".$injections."', CURDATE(), CURTIME())";
         $result = $mysqli->query($query);
         if($result){
-            echo json_encode([true, "saved successfuly", "success", "plan"]);
+            echo json_encode([true, "saved successfuly", "success", "injections"]);
         }else{
             echo json_encode([false, "Something went terribly wrong! please contact support at support@itilria.co.za".$mysqli->error, "error"]);
         }

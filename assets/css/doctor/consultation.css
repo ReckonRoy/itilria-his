@@ -177,7 +177,112 @@ th, td{
 	margin-left: 80%;
 }
 
+.save_btn:hover{
+	cursor: pointer;
+}
+/***********************************************************************************************************************/
+#prescription-control{
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+}
 
+#save-presc-btn{
+	margin-left: 58%;
+}
+.print_prescription{
+	background-color: gray;
+	outline: 1px solid black !important;
+	padding: 8px 0;
+	box-sizing: border-box;
+	border-radius: 10px;
+	color: white;
+	font-weight: bolder;
+	font-size: 14px;
+	width: 20%;
+	float: right;
+}
+.print_prescription:hover{
+	cursor: pointer;
+}
+
+.clear_float{
+	clear: both;
+}
+#print-prescription-div{
+	display: none;
+	position: absolute;
+	z-index: 20;
+	background-color: white;
+	width: 70%;
+	border: 2px solid darkgray;
+	box-sizing: border-box;
+	padding: 20px 0;
+	margin-left: 15%;
+}
+
+#close-print-btn{
+	display: none;
+	position: fixed;
+	border: 2px solid darkred;
+	border-radius: 25px;
+	color: red;
+	box-sizing: border-box;
+	width: 150px;
+	height: 50px;
+	left: 80%;
+	z-index: 30;
+	top: 35%;
+	background-color: white;
+}
+#print-btn{
+	display: none;
+	position: fixed;
+	border: 2px solid yellow;
+	border-radius: 25px;
+	color: white;
+	box-sizing: border-box;
+	width: 150px;
+	height: 50px;
+	left: 80%;
+	z-index: 35;
+	top: 45%;
+	background-color: purple;
+}
+#close-print-btn:hover{
+	cursor: pointer;
+	border: 2px solid red;
+}
+
+#print-btn:hover{
+	cursor: pointer;
+	border: 2px solid blue;
+}
+
+.print_prescription_table{
+				border: 1px solid black; 
+				width: 700px;
+				border-collapse: collapse;
+				overflow-y: auto;
+			}
+			
+
+			.prescription_thead{
+				border: 1px solid black;
+
+			}
+
+			.prescription_tdata{
+				border: 1px solid black;
+			}
+			.theadClass{
+				border: none;
+			}
+
+			.drugs_prescribed{
+				border: none;
+			}
+/*******************************************************************************************************************/
 #assesment-form input[type=text]{
 	padding: 10px 8px;
 	box-sizing: border-box;

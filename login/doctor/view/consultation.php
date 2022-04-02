@@ -21,6 +21,56 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 	</head>
 	<body>
 
+		<!--/*******************************************************************************************************/-->
+		<input type="button" value="Close" id="close-print-btn">
+
+		<input type="button" value="Print" id="print-btn">
+			<div id="print-prescription-div">
+				<center>
+				<table class="print_prescription_table" borderColor="black" border="1px"
+				 width="600" cellpadding="2" cellspacing="2">
+				<thead>
+					<tr>
+						<th colspan="3" class="prescription_thead">Countryside Pharmacy</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="3" id="td-pat-name" class="prescription_tdata">Patient's Name:</td>
+					</tr>
+					<tr>
+						<td colspan="3" id="td-pat-addr" class="prescription_tdata">Address:</td>
+					</tr>
+					<tr>
+						<td class="prescription_tdata" id="td-pat-age">Age:</td>
+						<td class="prescription_tdata" id="td-pat-gender">Sex:</td>
+					</tr>
+					<!-- Body -->
+					<tr>
+						<th colspan="3" class="theadClass">Drugs Prescribed</th>
+					</tr>
+					<tr>
+						<td colspan="3" height="300" id="td-pat-presc" class="drugs_prescribed">
+							
+						</td>
+					</tr>
+					<!-- Footer-->
+					<tr>
+						<td colspan="3" id="td-doc-name" class="prescription_tdata">Practitioner's Name and Qulifications:</td>
+					</tr>
+					<tr>
+							<td class="prescription_tdata">Signature</td>
+							<td class="prescription_tdata">AFOZ No, 049830</td>
+					</tr>
+					<tr>
+						<td colspan="3" id="td-presc-date" class="prescription_tdata">Date:</td>
+					</tr>
+				</tbody>
+			</table>
+			</center>
+		</div>
+
+				<!--/*******************************************************************************************************/-->
 		<div id="container">
 		<?php	
 			require "./header.php";
@@ -39,7 +89,7 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 			*patient vital results
 			*patient notes
 			*investigations and results
-			*plan
+			*injections
 			*********************************************************************************************************************-->
 			
 				<div id="search-container"><!-- form for searching patient -->
@@ -105,25 +155,31 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 				</div>
 				<!------------------------------------------------------------------------------------------------------------>
 				<!------------------------------------------------------------------------------------------------------------->
+				<div id="injections"><!--Injections SECTION-->
+					<form id="injections-form" name="injections_form" class="ops-form">
+						<input type="hidden" name="injections_pid">
+						<label>Injections</label>
+						<textarea name="injections" rows="5"></textarea>
+						<input type="button" id="save-injections-btn" class="save_btn" value="Save">
+					</form>
+				</div>
+				<!------------------------------------------------------------------------------------------------------------->
+				<!------------------------------------------------------------------------------------------------------------->
+
 				<div id="prescription"><!--PATIENT Prescription SECTION-->
 					<form id="prescription-form" name="prescription_form" class="ops-form">
 						<input type="hidden" name="presc_pid">
 						<label>Prescription</label>
 						<textarea name="prescription" rows="5"></textarea>
+						<div id="prescription-control">
 						<input type="button" id="save-presc-btn" class="save_btn" value="Save">
+						<input type="button" id="print-prescription-btn" class="print_prescription" value="Print prescription">
+						<div class="clear_float"></div>
+						</div>
 					</form>
 				</div>
 				<!------------------------------------------------------------------------------------------------------------>
-				<!------------------------------------------------------------------------------------------------------------->
-				<div id="plans"><!--PATIENT PLANS SECTION-->
-					<form id="plan-form" name="plan_form" class="ops-form">
-						<input type="hidden" name="plan_pid">
-						<label>Plan</label>
-						<textarea name="plan" rows="5"></textarea>
-						<input type="button" id="save-plan-btn" class="save_btn" value="Save">
-					</form>
-				</div>
-				<!------------------------------------------------------------------------------------------------------------->
+				
 			</div>
 		</main>
 		<?php	
@@ -135,6 +191,7 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 		<script type="text/javascript" src="../../../assets/js/search.js"></script>
 		<script type="text/javascript" src="../../../assets/js/vitals.js"></script>
 		<script type="text/javascript" src="../../../assets/js/doctor/doctor.js"></script>
+		<script type="text/javascript" src="../../../assets/js/doctor/prescription.js"></script>
 		<script type="text/javascript" src="../../../assets/js/doctor/main.js"></script>
 		<script type="text/javascript" src="../../../assets/js/emr.js"></script>
 	</body>

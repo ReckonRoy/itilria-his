@@ -15,7 +15,7 @@
             $doctor->querySelectPatient($mysqli, $patient_id);
             $doctor->querySelectAssesment($mysqli, $patient_id);
             $doctor->querySelectDoctor($mysqli, $doctor->getDoctorID());
-            $doctor->querySelectPlan($mysqli, $patient_id);
+            $doctor->querySelectInjections($mysqli, $patient_id);
             $doctor->querySelectProcedures($mysqli, $patient_id);
             $doctor->querySelectPrescription($mysqli, $patient_id);
             

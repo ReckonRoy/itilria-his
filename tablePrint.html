@@ -1,0 +1,110 @@
+<html>
+	<head>
+		<title>Print Prescription</title>
+		<meta charset="utf-8">
+		<style type="text/css">
+			.print_prescription_table{
+				border: 1px solid black; 
+				width: 700px;
+				border-collapse: collapse;
+			}
+			
+
+			.prescription_thead{
+				border: 1px solid black;
+
+			}
+
+			.prescription_tdata{
+				border: 1px solid black;
+			}
+			.theadClass{
+				border: none;
+			}
+
+			.drugs_prescribed{
+				border: none;
+			}
+		</style>
+	</head>
+
+	<body>
+			<input type="button" value="Print" id="">
+		
+			<div id="print-prescription-div">
+				<center>
+				<table class="print_prescription_table" borderColor="black" border="1px"
+				 width="600" cellpadding="2" cellspacing="2">
+				<thead>
+					<tr>
+						<th colspan="3" class="prescription_thead">Countryside Pharmacy</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="3" class="prescription_tdata">Patient's Name:</td>
+					</tr>
+					<tr>
+						<td colspan="3" class="prescription_tdata">Address:</td>
+					</tr>
+					<tr>
+						<td class="prescription_tdata">Age:</td>
+						<td class="prescription_tdata">Sex:</td>
+					</tr>
+					<!-- Body -->
+					<tr>
+						<th colspan="3" class="theadClass">Drugs Prescribed</th>
+					</tr>
+					<tr>
+						<td colspan="3" height="400" class="drugs_prescribed">
+							
+						</td>
+					</tr>
+					<!-- Footer-->
+					<tr>
+						<td colspan="3" class="prescription_tdata">Practitioner's Name and Qulifications:</td>
+					</tr>
+					<tr>
+							<td class="prescription_tdata">Signature</td>
+							<td class="prescription_tdata">AFOZ No, 049830</td>
+					</tr>
+					<tr>
+						<td colspan="3" class="prescription_tdata">Date:</td>
+					</tr>
+				</tbody>
+			</table>
+			</center>
+		</div>
+
+		<input type="button" value="Print prescription" id="print-btn">
+
+	<script type="text/javascript">
+		printPriscriptionObject = {
+			print_btn: document.getElementById('print-btn'),
+			print_prescription: document.getElementById('print-prescription-div'),
+
+			printPrescription: function()
+			{
+				var print_prescription = printPriscriptionObject.print_prescription.innerHTML;
+				var a = window.open('', '', 'height = 550, width=650');
+				a.document.write('<html>');
+				a.document.write('<body>');
+				a.document.write(print_prescription);
+				a.document.write('</body></html>');
+				a.document.close();
+				a.print();
+			},
+
+			runPrint: function()
+			{
+				printPriscriptionObject.print_btn.addEventListener("click", function()
+				{
+					printPriscriptionObject.printPrescription();
+				});
+			}
+		}
+
+		printPriscriptionObject.runPrint();
+	</script>
+	</body>
+</html>

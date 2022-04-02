@@ -3,12 +3,12 @@ let patient = {
 	url: null,
 	save_presc_btn: document.getElementById("save-presc-btn"),
 	save_proc_btn: document.getElementById("save-proc-btn"),
-	save_plan_btn: document.getElementById("save-plan-btn"),
+	save_injections_btn: document.getElementById("save-injections-btn"),
 	savenotes_btn: document.getElementById("savenotes-btn"),
 	save_ass_btn: document.getElementById("saveassesment-btn"),
 	notes_form: document.getElementById("notes-form"),
 	assesment_form: document.getElementById("assesment-form"),
-	plan_form: document.getElementById("plan-form"),
+	injections_form: document.getElementById("injections-form"),
 	procedures_form: document.getElementById("procedures-form"),
 	prescription_form: document.getElementById("prescription-form"),
 
@@ -44,10 +44,10 @@ let patient = {
 					var signs_name = patient.assesment_form.signs.name;
 					var signs_value = patient.assesment_form.signs.value;
 					patient.xhr.send(patient.patient_id+"="+patient.assesment_form.asses_pid.value+"&"+patient.assesment_form.symptoms.name+"="+patient.assesment_form.symptoms.value+"&"+signs_name+"="+signs_value);
-				}else if(patient.plan_form.name == "plan_form"){
-					var plan_name = patient.plan_form.plan.name;
-					var plan_value = patient.plan_form.plan.value;
-					patient.xhr.send(patient.patient_id+"="+patient.plan_form.plan_pid.value+"&"+plan_name+"="+plan_value);
+				}else if(patient.injections_form.name == "injections_form"){
+					var injections_name = patient.injections_form.injections.name;
+					var injections_value = patient.injections_form.injections.value;
+					patient.xhr.send(patient.patient_id+"="+patient.injections_form.injections_pid.value+"&"+injections_name+"="+injections_value);
 				}else if(patient.procedures_form.name == "procedures_form"){
 					var investigation_name = patient.procedures_form.investigation.name;
 					var investigation_value = patient.procedures_form.investigation.value;
@@ -89,9 +89,9 @@ let patient = {
 						}else if(result[3] == "assesment")
 						{
 							patient.content(patient.save_ass_btn, result[1]);
-						}else if(result[3] == "plan")
+						}else if(result[3] == "injections")
 						{
-							patient.content(patient.save_plan_btn, result[1]);
+							patient.content(patient.save_injections_btn, result[1]);
 						}else if(result[3] == "procedures")
 						{
 							patient.content(patient.save_proc_btn, result[1]);
@@ -123,7 +123,7 @@ let patient = {
 			if(patient.notes_form.name == "notes_form")
 			{
 				patient.assesment_form.name = "";
-				patient.plan_form.name = "";
+				patient.injections_form.name = "";
 				patient.procedures_form.name = "";
 				patient.prescription_form.name = "";
 				patient.patient_id = patient.notes_form.notes_pid.name;
@@ -138,7 +138,7 @@ let patient = {
 			if(patient.assesment_form.name == "assesment_form")
 			{
 				patient.notes_form.name = "";
-				patient.plan_form.name = "";
+				patient.injections_form.name = "";
 				patient.procedures_form.name = "";
 				patient.prescription_form.name = "";
 				patient.patient_id = patient.assesment_form.asses_pid.name;
@@ -146,17 +146,17 @@ let patient = {
 			}
 		});
 		
-		//plan btn
-		patient.save_plan_btn.addEventListener("click", function()
+		//injections btn
+		patient.save_injections_btn.addEventListener("click", function()
 		{	
-			patient.plan_form.name = "plan_form";
-			if(patient.plan_form.name == "plan_form")
+			patient.injections_form.name = "injections_form";
+			if(patient.injections_form.name == "injections_form")
 			{
 				patient.notes_form.name = "";
 				patient.assesment_form.name = "";
 				patient.procedures_form.name = "";
 				patient.prescription_form.name = "";
-				patient.patient_id = patient.plan_form.plan_pid.name;
+				patient.patient_id = patient.injections_form.injections_pid.name;
 				patient.request();
 			}
 		});
@@ -168,7 +168,7 @@ let patient = {
 			{
 				patient.notes_form.name = "";
 				patient.assesment_form.name = "";
-				patient.plan_form.name = "";
+				patient.injections_form.name = "";
 				patient.prescription_form.name = "";
 				patient.patient_id = patient.procedures_form.proc_pid.name;
 				patient.request();
@@ -183,7 +183,7 @@ let patient = {
 			{
 				patient.notes_form.name = "";
 				patient.assesment_form.name = "";
-				patient.plan_form.name = "";
+				patient.injections_form.name = "";
 				patient.procedures_form.name = "";
 				patient.patient_id = patient.prescription_form.presc_pid.name;
 				patient.request();

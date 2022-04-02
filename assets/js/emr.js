@@ -299,10 +299,10 @@ let emr = {
 
 		var row12 = document.createElement("tr");
 		row12_h1 = document.createElement("th");
-		row12_h1.appendChild(document.createTextNode("Plan"));
+		row12_h1.appendChild(document.createTextNode("Injections"));
 		row12.appendChild(row12_h1);
 		row12_data1 = document.createElement("td");
-		row12_data1.appendChild(document.createTextNode(record.plan));
+		row12_data1.appendChild(document.createTextNode(record.injections));
 		row12.appendChild(row12_data1);
 		tbody.appendChild(row12);
 		table.appendChild(tbody);
