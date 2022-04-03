@@ -7,6 +7,8 @@ let search = {
 	resultBox: document.getElementById("search-results"),
 	patientID_field: document.getElementById("patientID-field"),
 	patient_details: document.getElementById("patient-details"),
+	chargesheet_pid: document.getElementById('chargesheet-pid'),
+	img_pid: document.getElementById('img-pid'),
 
 	createXHR: function()
 	{
@@ -111,6 +113,10 @@ let search = {
 
 				var prescription_form = document.getElementById("prescription-form");
 				prescription_form.presc_pid.value = p_id;
+
+				search.chargesheet_pid.value = p_id;
+
+				search.img_pid.value = p_id;
 			}
 		});
 		

@@ -103,6 +103,19 @@ class Doctor{
         return $this->doctor_notes;
     }
     
+    function getChargeSheet($mysqli, $p_id)
+    {
+        $query = "SELECT file_name FROM images WHERE patient_id='".$p_id."' ORDER BY uploaded_on DESC LIMIT 1";
+        $result = $mysqli->query($query);
+        if($result->num_rows > 0){
+            $row = $result->fetch_array(MYSQLI_ASSOC);
+            $imageUrl = $row['file_name'];
+            echo json_encode([true, $imageUrl]);
+        }else{
+            echo json_encode([false, "Please Select Patient".$mysqli->error]);
+        }
+    }
+    
     //get dates from vitals
     function querySelectDate($mysqli, $p_id){
         $query = "SELECT date FROM vitals WHERE patient_id='".$p_id."'";

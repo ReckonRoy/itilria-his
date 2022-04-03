@@ -21,10 +21,15 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 	</head>
 	<body>
 
-		<!--/*******************************************************************************************************/-->
+<!--/**********************************************************************************************************
+TABLE CONTAINING PRESCRIPTION DETAILS
+************************************************************************************************************/-->
 		<input type="button" value="Close" id="close-print-btn">
-
 		<input type="button" value="Print" id="print-btn">
+		<div id="enlarged-img-div">
+			<input type="button" class="close" id="close-eid" value="X">
+			<img src="" alt="placeholder+image" id="enlarged-img">
+		</div>
 			<div id="print-prescription-div">
 				<center>
 				<table class="print_prescription_table" borderColor="black" border="1px"
@@ -50,7 +55,7 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 						<th colspan="3" class="theadClass">Drugs Prescribed</th>
 					</tr>
 					<tr>
-						<td colspan="3" height="300" id="td-pat-presc" class="drugs_prescribed">
+						<td colspan="3" height="300" id="td-pat-presc" valign="top" class="drugs_prescribed">
 							
 						</td>
 					</tr>
@@ -70,27 +75,34 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 			</center>
 		</div>
 
-				<!--/*******************************************************************************************************/-->
+<!--/***************************************************************************************************************************/-->
 		<div id="container">
 		<?php	
 			require "./header.php";
 		?>
+<!----------------------------------------------------PATIENT EMR SECTION-------------------------------------------------------->
 		<div id="emr-container">
-			
 			<div id="emr-record-div">
 							
+				</div>
+				<div id="emr-chargesheet">
+				<img src="" alt="placeholder+image" id="chargesheet-image">
+				<form>
+					<input type="hidden" name="img_pid" id="img-pid">
+					<input type="button" value="Get chargesheet" id="chargesheet-btn">
+				</form>
 				</div>
 				<div id="close">close</div>
 			</div>
 		<main>
-			<!--********************************************************************************************************************* *div for patient details
-			*search patient
-			*patient history
-			*patient vital results
-			*patient notes
-			*investigations and results
-			*injections
-			*********************************************************************************************************************-->
+<!--******************************************************************************************************************************* *div for patient details
+*search patient
+*patient history
+*patient vital results
+*patient notes
+*investigations and results
+*injections
+*********************************************************************************************************************-->
 			
 				<div id="search-container"><!-- form for searching patient -->
 					<form id="search-form" name="doctor_search_form">
@@ -103,8 +115,15 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 				<div id="patient-details"></div>
 				<div id="control-div">
 					<!--EMR, Request -Controls- -->
-					<button id="emr-btn">EMR</button><input type="button" value="Chargesheet">
-
+					<button id="emr-btn">EMR</button>
+					<div>
+					<form method="POST" action="../model/upload.php" enctype="multipart/form-data">
+					<input type="hidden" name="chargesheet_pid" id="chargesheet-pid">
+					<input type="file" name="image">
+					<input type="date" name="upload_date">
+					<input type="submit" value="Upload chargesheet" id="chargesheet-btn">
+					</form>
+					</div>
 				</div>
 				<div id="c-container">
 				<!-------------------------------------------------------------------------------------------------------------------->
@@ -194,5 +213,6 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 		<script type="text/javascript" src="../../../assets/js/doctor/prescription.js"></script>
 		<script type="text/javascript" src="../../../assets/js/doctor/main.js"></script>
 		<script type="text/javascript" src="../../../assets/js/emr.js"></script>
+		<script type="text/javascript" src="../../../assets/js/doctor/chargesheet.js"></script>
 	</body>
 </html>

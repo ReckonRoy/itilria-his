@@ -76,14 +76,14 @@ let emr = {
 	emr_modal: function(){
 		emr.emr_parent_div.style.display = "none";
 		emr.close_btn.addEventListener("click", function(){
-			if(emr.emr_parent_div.style.display == "block"){
+			if(emr.emr_parent_div.style.display == "grid"){
 				emr.emr_parent_div.style.display = "none";
 			}
 		});
 
 		emr.emr_btn.addEventListener("click", function(){
 			if(emr.emr_parent_div.style.display == "none"){
-				emr.emr_parent_div.style.display = "block";
+				emr.emr_parent_div.style.display = "grid";
 			}
 		});
 
