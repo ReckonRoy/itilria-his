@@ -105,7 +105,12 @@
 						<li>Brother</li>
 						<li>Sister</li>
 						<li>Mother</li>
-						<li>Father</li>
+						<li>Father</li>						
+						<li>Daughter</li>
+						<li>Son</li>						
+						<li>Nephew</li>
+						<li>Niece</li>
+						<li>Cousin</li>
 						<li>Uncle</li>
 						<li>Auntie</li>
 						<li>Grandmother</li>
