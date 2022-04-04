@@ -108,7 +108,7 @@ class Vitals{
     
     //save patient vitals into appropriate patient id
     function saveVitals($mysqli, $p_id){
-        $query = "INSERT INTO vitals(patient_id, staff_id, temperature, blood_glucose, blood_pressure, weight, height, pulse, saturation, bmi, history, time, date) VALUES('".$this->getPatientID()."', '".$this->getStaffID()."', '".$this->getTemp()."', '".$this->getGlucose()."', '".$this->getPressure()."', '".$this->getWeight()."', '".$this->getHeight()."', '".$this->getPulse()."', '".$this->getSaturation()."', '".$this->getBMI()."', '".$this->getHistory()."', CURTIME(), CURDATE())";
+        $query = "INSERT INTO vitals(patient_id, staff_id, temperature, blood_glucose, blood_pressure, weight, height, pulse, saturation, bmi, history, time, date) VALUES('".$this->getPatientID()."', '".$this->getStaffID()."', '".$this->getTemp()."', '".$this->getGlucose()."', '".$this->getPressure()."', '".$this->getWeight()."', '".$this->getHeight()."', '".$this->getPulse()."', '".$this->getSaturation()."', '".$this->getBMI()."', '".$this->getHistory()."', CURTIME(), CURDATE()";
         $result = $mysqli->query($query);
         if($result)
         {

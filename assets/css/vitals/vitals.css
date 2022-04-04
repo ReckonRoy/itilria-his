@@ -179,12 +179,19 @@ overlay, server response dialog dialog
 	box-sizing: border-box;
 	background-color: blue;
 	color: white;
-	border: 1px solid blue;
 	font-weight: bolder;
 	font-size: 18px;
 	border-radius: 10px;
 	margin-top: 20px;
 	margin-bottom: 10px;
+	border: 1px solid cyan;
+}
+
+#vitals-btn:hover
+{
+	cursor: pointer;
+	outline: 1px solid red;
+	color: cyan;
 }
 
 sub{
@@ -199,5 +206,4 @@ sup{
 
 #history-textarea{
 	width: 100%;
-	grid-column: 2/3;
 }

@@ -80,7 +80,7 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 				<label>%</label>
 				<!------------------------------------------------------------------------------------>
 				<label>BMI</label>
-				<input type="text" name="bmi" id="bmi" class="fields">
+				<input type="text" name="bmi" id="bmi" class="fields"><label></label>
 				<!------------------------------------------------------------------------------------>
 				<label>Patient History</label>
 				<textarea id="history-textarea" name="history" rows="5"></textarea>
