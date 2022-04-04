@@ -42,6 +42,8 @@ let saveVitals = {
 				var sat = saveVitals.vitals_form.saturation;
 				var patient_id = saveVitals.vitals_form.p_id;
 				var bmi = saveVitals.vitals_form.bmi;
+				var vtime = saveVitals.vitals_form.vitals_time;
+				var vdate = saveVitals.vitals_form.vitals_date;
 				var history = saveVitals.vitals_form.history;
 				saveVitals.xhr.send(
 					patient_id.name+"="+patient_id.value
@@ -53,6 +55,8 @@ let saveVitals = {
 					+"&"+pulse.name+"="+pulse.value
 					+"&"+sat.name+"="+sat.value
 					+"&"+bmi.name+"="+bmi.value
+					+"&"+vtime.name+"="+vtime.value
+					+"&"+vdate.name+"="+vdate.value
 					+"&"+history.name+"="+history.value);
 
 				document.body.style.cursor = "wait";

@@ -16,6 +16,8 @@ class Vitals{
     private $pulse = null;
     private $saturation = null;
     private $bmi = null;
+    private $vtime = null;
+    private $vdate = null;
     private $history = null;
     private $success_msg = null;
     private $error_msg = null;
@@ -74,6 +76,12 @@ class Vitals{
         return $this->bmi;
     }
     
+    function getTime(){
+        return $this->vtime;
+    }
+    function getDate(){
+        return $this->vdate;
+    }    
     function getHistory(){
         return $this->history;
     }
@@ -108,7 +116,7 @@ class Vitals{
     
     //save patient vitals into appropriate patient id
     function saveVitals($mysqli, $p_id){
-        $query = "INSERT INTO vitals(patient_id, staff_id, temperature, blood_glucose, blood_pressure, weight, height, pulse, saturation, bmi, history, time, date) VALUES('".$this->getPatientID()."', '".$this->getStaffID()."', '".$this->getTemp()."', '".$this->getGlucose()."', '".$this->getPressure()."', '".$this->getWeight()."', '".$this->getHeight()."', '".$this->getPulse()."', '".$this->getSaturation()."', '".$this->getBMI()."', '".$this->getHistory()."', CURTIME(), CURDATE()";
+        $query = "INSERT INTO vitals(patient_id, staff_id, temperature, blood_glucose, blood_pressure, weight, height, pulse, saturation, bmi, history, time, date) VALUES('".$this->getPatientID()."', '".$this->getStaffID()."', '".$this->getTemp()."', '".$this->getGlucose()."', '".$this->getPressure()."', '".$this->getWeight()."', '".$this->getHeight()."', '".$this->getPulse()."', '".$this->getSaturation()."', '".$this->getBMI()."', '".$this->getHistory()."', '".$this->getTime()."', '".date("Y-m-d", strtotime($this->getDate()))."')";
         $result = $mysqli->query($query);
         if($result)
         {
@@ -124,7 +132,7 @@ class Vitals{
      * glucose pressure -> are preceded by blood_ in database
      * temp -> is temperature in database
      */
-    function setVitals($p_id, $s_id, $temp, $glu, $pres, $w, $h, $pul, $saturation, $bmi, $history){
+    function setVitals($p_id, $s_id, $temp, $glu, $pres, $w, $h, $pul, $saturation, $bmi, $vtime, $vdate, $history){
         $this->patient_id = $p_id;
         $this->staff_id = $s_id;
         $this->temp = $temp;
@@ -135,6 +143,8 @@ class Vitals{
         $this->pulse = $pul;
         $this->saturation = $saturation;
         $this->bmi = $bmi;
+        $this->vtime = $vtime;
+        $this->vdate = $vdate;
         $this->history = $history;
     }
 }

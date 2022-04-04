@@ -82,6 +82,14 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 				<label>BMI</label>
 				<input type="text" name="bmi" id="bmi" class="fields"><label></label>
 				<!------------------------------------------------------------------------------------>
+				<!------------------------------------------------------------------------------------>
+				<label>Time</label>
+				<input type="time" name="vitals_time" id="vitals-time" class="fields"><label></label>
+				<!------------------------------------------------------------------------------------>
+				<!------------------------------------------------------------------------------------>
+				<label>Date</label>
+				<input type="date" name="vitals_date" id="vitals-date" class="fields"><label></label>
+				<!------------------------------------------------------------------------------------>
 				<label>Patient History</label>
 				<textarea id="history-textarea" name="history" rows="5"></textarea>
 				<input type="button" id="vitals-btn" value="Save">
