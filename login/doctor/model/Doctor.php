@@ -15,6 +15,8 @@ class Doctor{
     private $weight = null;
     private $height= null;
     private $pulse = null;
+    private $age = null;
+    private $dob = null;
     private $success_msg = null;
     private $error_msg = null;
     private $patient_name = null;
@@ -54,6 +56,17 @@ class Doctor{
         return $this->patient_id;
     }
     
+    function getDOB()
+    {
+        return date("Y", strtotime($this->dob));
+    }
+    
+    function getAge(){
+        $this->age = date("Y") - $this->getDOB();
+        return $this->age;
+    }
+    
+
     function getStaffID(){
         return $this->staff_id;
     }
@@ -217,12 +230,26 @@ class Doctor{
  *query patient table for patient records 
  */   
     function querySelectPatient($mysqli, $p_id){
-        $query = "SELECT name, surname, gender, contact, registered_date FROM patient WHERE patient_id='".$p_id."' ORDER BY registered_date DESC LIMIT 1";
+        $query = "SELECT name, surname, gender, dob, contact, registered_date FROM patient WHERE patient_id='".$p_id."' ORDER BY registered_date DESC LIMIT 1";
         $result = $mysqli->query($query);
         if($result->num_rows != 0)
         {
-            while($row = $result->fetch_array(MYSQLI_ASSOC))
-            $this->patient_array = $row;
+            $row = $result->fetch_array(MYSQLI_ASSOC);
+            $name = $row['name'];
+            $surname = $row['surname'];
+            $gender = $row['gender'];
+            $this->dob = $row['dob'];
+            $contact = $row['contact'];
+            $registered_date = $row['registered_date'];
+
+            $this->patient_array = array(
+                'name'=>$name,
+                'surname'=>$surname,
+                'gender'=>$gender,
+                'age'=>$this->getAge(),
+                'contact'=>$contact,
+                'registered_date'=>$registered_date
+            );
         }else{
             $this->error_msg .= "PatientId does not exist!".$mysqli->error;
             echo json_encode([false, $this->error_msg]);

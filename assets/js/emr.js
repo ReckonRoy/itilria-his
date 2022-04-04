@@ -128,6 +128,16 @@ let emr = {
 		row1_1.appendChild(row1_1_data1);
 		tbody.appendChild(row1_1);
 		//date
+
+		var row2_age = document.createElement("tr");
+		row2_age_h1 = document.createElement("th");
+		row2_age_h1.appendChild(document.createTextNode("Age"));
+		row2_age.appendChild(row2_age_h1);
+		row2_age_data1 = document.createElement("td");
+		row2_age_data1.appendChild(document.createTextNode(record.age));
+		row2_age.appendChild(row2_age_data1);
+		tbody.appendChild(row2_age);
+
 		var row2 = document.createElement("tr");
 		row2_h1 = document.createElement("th");
 		row2_h1.appendChild(document.createTextNode("Date"));
