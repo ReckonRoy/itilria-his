@@ -82,20 +82,17 @@ TABLE CONTAINING PRESCRIPTION DETAILS
 		?>
 <!----------------------------------------------------PATIENT EMR SECTION-------------------------------------------------------->
 		<div id="emr-container">
-			<div id="emr-record-div">
-							
-				</div>
-				<div></div>
-				<div id="emr-chargesheet">
-				<img src="" alt="placeholder+image" id="chargesheet-image">
-				<form>
-					<input type="hidden" name="img_pid" id="img-pid">
-					<input type="button" value="Get chargesheet" id="chargesheet-btn">
-				</form>
-				</div>
-				<div id="close">close</div>
+			<div id="emr-record-div"></div>
+			<div id="emr-chargesheet">
+			<img src="" alt="placeholder+image" id="chargesheet-image">
+			<form>
+				<input type="hidden" name="img_pid" id="img-pid">
+				<input type="button" value="Get chargesheet" id="chargesheet-btn">
+			</form>
 			</div>
-		<main>
+			<div id="close">close</div>
+		</div>
+	<main>
 <!--******************************************************************************************************************************* *div for patient details
 *search patient
 *patient history
