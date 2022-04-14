@@ -1,0 +1,28 @@
+#ps-div{
+	display: grid;
+	margin-left: 10%;
+	width: 80%;
+}
+
+#user-form{
+	display: grid;
+	width: 50%;
+	grid-template-columns: 30% 70%;
+	grid-row-gap: 1.2em;
+	
+}
+
+#username-form{
+	display: grid;
+	width: 50%;
+	grid-template-columns: 30% 70%;
+	grid-row-gap: 1.2em;
+}
+
+#password-form
+{
+	display: grid;
+	width: 50%;
+	grid-template-columns: 40% 60%;
+	grid-row-gap: 1.2em;
+}

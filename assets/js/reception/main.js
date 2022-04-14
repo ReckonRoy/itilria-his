@@ -2,6 +2,7 @@ let profileObject = {
 	profile_m_div: document.getElementById("profile-menu-div"),
 	avatar: document.getElementById("avatar-div"),
 	logout_btn: document.getElementById("logout-btn"),
+	profile_btn: document.getElementById('profile-btn'),
 	
 	
 	profile_m: function()
@@ -20,6 +21,11 @@ let profileObject = {
 		{
 			window.location.href = "../../logout.php";
 		};
+
+		profileObject.profile_btn.onclick = function()
+		{
+			window.location.href = "./profile.php";
+		};		
 	}
 }
 

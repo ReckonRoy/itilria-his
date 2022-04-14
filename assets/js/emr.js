@@ -308,7 +308,7 @@ let emr = {
 		row11_h1.appendChild(document.createTextNode("Prescription"));
 		row11.appendChild(row11_h1);
 		row11_data1 = document.createElement("td");
-		row11_data1.appendChild(document.createTextNode(record.prescription));
+		row11_data1.innerHTML = record.prescription;
 		row11.appendChild(row11_data1);
 		tbody.appendChild(row11);
 
