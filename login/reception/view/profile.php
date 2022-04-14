@@ -34,10 +34,11 @@
 	require './aside.php';
 ?>
 <main id="">
+	<h2 id="main-header">Profile Settings</h2>
 	<div id="ps-div">
-		<h2 id="main-header">Profile Settings</h2>
 
 		<form id="user-form">
+			<h3 class="ps-form-header">General details about you</h3>
 			<label>Name</label>
 			<input type="text" name="fname" class="field">
 			<label>Surname</label>
@@ -54,12 +55,14 @@
 		</form>
 
 		<form id="username-form">
+			<h3 class="ps-form-header">create a user name for your account or change your old one</h3>
 			<label>Username</label>
 			<input type="text" name="username">
 			<input type="button" name="" value="submit">
 		</form>
 
 		<form id="password-form">
+			<h3 class="ps-form-header">Secure your password</h3>
 			<label>Enter old password</label>
 			<input type="password" name="old_pwd">
 			<label>New password</label>

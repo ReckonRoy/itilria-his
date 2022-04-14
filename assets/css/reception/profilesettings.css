@@ -3,7 +3,6 @@
 	margin-left: 10%;
 	width: 80%;
 }
-
 #user-form{
 	display: grid;
 	width: 50%;
@@ -25,4 +24,8 @@
 	width: 50%;
 	grid-template-columns: 40% 60%;
 	grid-row-gap: 1.2em;
+}
+
+.ps-form-header{
+	grid-column: 1/3;
 }
