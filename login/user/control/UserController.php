@@ -22,5 +22,24 @@ if(isset($_POST['employee_id']))
     $user->getCredPassword($mysqli, $id);
     $user->setPasswordProps($current_pwd, $new_pwd, $confirm_pwd);
     $user->changePassword($mysqli, $id);
+}else if(isset($_POST['update_id'])){
+    $staff_id = $_POST['update_id'];
+    $name = $_POST['fname'];
+    $surname = $_POST['lname'];
+    $nationality = $_POST['nationality'];
+    $contact = $_POST['contact'];
+    $address = $_POST['address'];
+    
+    $user = new User();
+    $user->setUser($staff_id, $name, $surname, $nationality, $contact, $address);
+    $user->updateAjax($mysqli);
+}else if(isset($_POST['username_id'])){
+    $staff_id = $_POST["username_id"];
+    $username = $_POST['username'];
+    
+    $user = new User();
+    $user->setUsername($username);
+    $user->setID($staff_id);
+    $user->updateUsername($mysqli);
 }
 ?>

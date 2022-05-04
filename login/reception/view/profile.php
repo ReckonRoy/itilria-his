@@ -53,8 +53,10 @@
 			<input type="text" name="contact" id="contact" class="fields">
 			<label>Profession</label>
 			<input type="text" name="profession" id="profession" class="fields">
+			<label>Nationality</label>
+			<input type="text" name="nationality" id="nationality" class="fields">
 			<label>Address</label>
-			<textarea id="address-field" name="address" id="address" class="textrea" cols="5" rows="3"></textarea>			
+			<textarea id="address-field" name="address" class="textarea" cols="5" rows="3"></textarea>			
 			<input type="button" value="update" class="button-class" id="update-btn">
 		</form>
 

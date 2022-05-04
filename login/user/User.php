@@ -11,6 +11,7 @@
     private $contact = null;
     private $address = null;
     private $message = null;
+    private $username = null;
     
     /*This class serves a purpose of getting the currently logged person general details or the person who is being search from the database */ 
     function getUserResults($mysqli, $id)
@@ -122,9 +123,23 @@
     function getName(){
       return $this->name;
     }
+    
+    function getUsername(){
+        return $this->username;
+    }
+    
+    function setUsername($username){
+        $this->username = $username;
+    }
+    
     function getID(){
         return $this->id;    
     }
+    function setID($id)
+    {
+        $this->id = $id;
+    }
+    
     function getSurname(){
         return $this->surname;
     }
@@ -160,6 +175,30 @@
             $this->message = "User has been successfully updated";
         }else{
             $this->message = "Technical error. Please contact support at support@itilria.co.za"."<br>".$mysqli->error; 
+        }
+    }
+    
+    function updateAjax($mysqli){
+        $query = "UPDATE user SET name='".$this->getName()."', surname='".$this->getSurname()."', nationality='".$this->getNationality()."', contact='".$this->getContact()."', address='".$this->getAddress()."' WHERE credential_id='".$this->getID()."'";
+        $result = $mysqli->query($query);
+        if($result)
+        {
+            echo json_encode([true, 'Your details have been successfully updated', 'updateform', 'success']);
+           
+        }else{
+            echo json_encode([true, 'Technical error. Please contact support at support@itilria.co.za'.$mysqli->error.$mysqli->errno, 'updateform', 'error']);
+        }
+    }
+    
+    function updateUsername($mysqli){
+        $query = "UPDATE credentials SET username='".$this->getUsername()."' WHERE credential_id='".$this->getID()."'";
+        $result = $mysqli->query($query);
+        if($result)
+        {
+            echo json_encode([true, 'Your details have been successfully updated', 'username_form', 'success']);
+            
+        }else{
+            echo json_encode([true, 'Technical error. Please contact support at support@itilria.co.za'.$mysqli->error, 'username_form', 'error']);
         }
     }
     

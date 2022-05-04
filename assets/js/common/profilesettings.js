@@ -9,6 +9,7 @@ let profileSettingsObject = {
 	p_tag: document.getElementById("message"),
 	smp_div: document.getElementById("server-message-response"),
 	updateform: 'updateform',
+	username_form: document.getElementById('username-form');
 
 	createXHR: function()
 	{
@@ -55,7 +56,8 @@ let profileSettingsObject = {
 					var email_addr = document.getElementById('email_addr');
 					var contact = document.getElementById('contact');
 					var profession = document.getElementById('profession');
-					var address = document.getElementById('address');
+					var nationality = document.getElementById('nationality');
+					var address = document.getElementById('address-field');
 
 					profileSettingsObject.xhr.send(
 						"update_id="+staff_id.value
@@ -64,8 +66,17 @@ let profileSettingsObject = {
 						+"&"+email_addr.name+"="+email_addr.value
 						+"&"+contact.name+"="+contact.value
 						+"&"+profession.name+"="+profession.value
+						+"&"+nationality.name+"="+nationality.value
 						+"&"+address.name+"="+address.value
 					);
+				}else if(this.username_form.name == "username_form"){
+					var user_id = document.getElementById("staff-id");
+					var username = profileSettingsObject.username_form.username;
+
+					profileSettingsObject.xhr.send(
+						"username_id"+"="+user_id.value
+						+"&"+username.name+"="+username.value
+						);	
 				}
 				
 
@@ -99,11 +110,14 @@ let profileSettingsObject = {
 							profileSettingsObject.userform.contact.value = result[1].contact;
 							profileSettingsObject.userform.email_addr.value = result[1].email;
 							profileSettingsObject.userform.profession.value = result[1].profession;
+							profileSettingsObject.userform.nationality.value = result[1].nationality;
 							profileSettingsObject.userform.address.value = result[1].address;
 						}else if(result[2] == "passwordform")
 						{
 							profileSettingsObject.container(profileSettingsObject.p_tag, result[1], result[3]);
 						}else if(result[2] == 'updateform'){
+							profileSettingsObject.container(profileSettingsObject.p_tag, result[1], result[3]);
+						}}else if(result[2] == 'username_form'){
 							profileSettingsObject.container(profileSettingsObject.p_tag, result[1], result[3]);
 						}				
 					}
