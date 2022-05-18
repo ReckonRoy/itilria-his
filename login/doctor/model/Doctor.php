@@ -1,7 +1,7 @@
 <?php 
 /*
  * @author Le-Roy S. Jongwe
- * @desc This class is a model fo managing the vitals data and other related processing functionalities
+ * @desc This class is a model fo managing the patient data and retrieval of patient data related processing functionalities
  * 
  */
 class Doctor{
@@ -31,8 +31,9 @@ class Doctor{
     private $vitals_array = array();
     private $nurse_array = array();
     private $doctor_array = array();
-    private  $dates_array = array();
+    private $dates_array = array();
     private $employee_details_array = array();
+    private $record_date = null;
     function getPatientName(){
         return $this->patient_name;
     }
@@ -66,7 +67,14 @@ class Doctor{
         return $this->age;
     }
     
-
+    function setRecordDate($date){
+        $this->record_date = date("Y-m-d", strtotime($date));
+    }
+    
+    function getRecordDate()
+    {
+        return $this->record_date;
+    }
     function getStaffID(){
         return $this->staff_id;
     }
@@ -131,12 +139,12 @@ class Doctor{
     
     //get dates from vitals
     function querySelectDate($mysqli, $p_id){
-        $query = "SELECT date FROM vitals WHERE patient_id='".$p_id."'";
+        $query = "SELECT date FROM vitals WHERE patient_id='".$p_id."' ORDER BY date DESC";
         $result = $mysqli->query($query);
         if($result->num_rows != 0){
            
             while($row = $result->fetch_array(MYSQLI_ASSOC)){
-                $this->dates_array[] = $row;
+                $this->dates_array[] = $row['date'];
             }
             
         }else{
@@ -164,7 +172,7 @@ class Doctor{
         }
     }
 /*************************************************************************************************************************************************
-* get user id from a particular vitals related to a particular patient
+* get name and surname of the Doctor who attended the patient
 */
     function querySelectDoctor($mysqli, $s_id){
         $query = "SELECT name, surname FROM user WHERE credential_id='".$s_id."' LIMIT 1";
@@ -179,7 +187,6 @@ class Doctor{
         }
     }
 /*************************************************************************************************************************************************
- * /*************************************************************************************************************************************************
 * get staff profession
 */
     function querySelectStaffProfession($mysqli, $s_id){
@@ -213,7 +220,14 @@ class Doctor{
  * get user id from a particular vitals related to a particular patient
  */ 
     function querySelectVitals($mysqli, $p_id){
-        $query = "SELECT * FROM vitals WHERE patient_id='".$p_id."' ORDER BY date DESC LIMIT 1";
+        
+        if($this->record_date != null)
+        {
+            $query = "SELECT * FROM vitals WHERE patient_id='".$p_id."' && date='".$this->getRecordDate()."'";
+        }else{
+            $query = "SELECT * FROM vitals WHERE patient_id='".$p_id."' ORDER BY date DESC LIMIT 1";
+        }
+        
         $result = $mysqli->query($query);
         if($result->num_rows != 0)
         {
@@ -260,7 +274,12 @@ class Doctor{
     //get Assesment values
     function querySelectAssesment($mysqli, $p_id)
     {
-        $query = "SELECT * FROM assesment WHERE patient_id='".$p_id."' ORDER BY date DESC";
+        if($this->record_date != null)
+        {
+            $query = "SELECT * FROM assesment WHERE patient_id='".$p_id."' && date='".$this->getRecordDate()."' ORDER BY date DESC";
+        }else{
+            $query = "SELECT * FROM assesment WHERE patient_id='".$p_id."' ORDER BY date DESC";
+        }
         $result = $mysqli->query($query);
         if($result->num_rows != 0)
         {
@@ -287,7 +306,13 @@ class Doctor{
     
     function querySelectInjections($mysqli, $p_id)
     {
-        $query = "SELECT * FROM plan WHERE patient_id='".$p_id."' ORDER BY date DESC";
+        if($this->record_date != null)
+        {
+            $query = "SELECT * FROM plan WHERE patient_id='".$p_id."' && date='".$this->getRecordDate()."'";
+        }else{
+            $query = "SELECT * FROM plan WHERE patient_id='".$p_id."' ORDER BY date DESC";
+        }
+        
         $result = $mysqli->query($query);
         if($result->num_rows != 0)
         {
@@ -308,7 +333,13 @@ class Doctor{
     //get Procedures values
     function querySelectProcedures($mysqli, $p_id)
     {
-        $query = "SELECT * FROM investigations WHERE patient_id='".$p_id."' ORDER BY date DESC";
+        if($this->record_date != null)
+        {
+            $query = "SELECT * FROM investigations WHERE patient_id='".$p_id."' && date='".$this->getRecordDate()."'";
+        }else{
+            $query = "SELECT * FROM investigations WHERE patient_id='".$p_id."' ORDER BY date DESC";
+        }
+        
         $result = $mysqli->query($query);
         if($result->num_rows != 0)
         {
@@ -329,11 +360,17 @@ class Doctor{
     }
     
     /*************************************************************************************************************************************************/
+    
     /***********************************************************************************************************************************************/
     //get Prescription values
     function querySelectPrescription($mysqli, $p_id)
     {
-        $query = "SELECT * FROM prescription WHERE patient_id='".$p_id."' ORDER BY date DESC";
+        if($this->record_date != null)
+        {
+            $query = "SELECT * FROM prescription WHERE patient_id='".$p_id."' && date='".$this->getRecordDate()."'";
+        }else{
+            $query = "SELECT * FROM prescription WHERE patient_id='".$p_id."' ORDER BY date DESC";
+        }
         $result = $mysqli->query($query);
         if($result->num_rows != 0)
         {
@@ -382,20 +419,20 @@ class Doctor{
         $this->pulse = $pul;
     }
     
-    function saveNotes($mysqli, $p_id, $s_id, $notes)
+    function saveNotes($mysqli, $p_id, $notes)
     {
-        $query = "INSERT INTO doctorsnotes(patient_id, staff_id, doctor_notes, date, time) VALUES('".$p_id."', '".$s_id."','".$notes."', CURDATE(), CURTIME())";
+        $query = "INSERT INTO doctorsnotes(patient_id, staff_id, doctor_notes, date, time) VALUES('".$p_id."', '".$this->getStaffID()."','".$notes."', CURDATE(), CURTIME())";
         $result = $mysqli->query($query);
         if($result){
             echo json_encode([true, "saved successfuly", "success", "notes"]);
         }else{
-            echo json_encode([false, "Something went terribly wrong! please contact support at support@itilria.co.za".$mysqli->error, "error"]);
+            echo json_encode([false, $this->getStaffID()."Something went terribly wrong! please contact support at support@itilria.co.za".$mysqli->error, "error"]);
         }
     }
     /**********************************************************************************************************************************************/
-    function saveAssesment($mysqli, $p_id, $s_id, $symptoms, $signs)
+    function saveAssesment($mysqli, $p_id, $symptoms, $signs)
     {
-        $query = "INSERT INTO assesment(patient_id, staff_id, symptoms, signs, date, time) VALUES('".$p_id."', '".$s_id."','".$symptoms."', '".$signs."', CURDATE(), CURTIME())";
+        $query = "INSERT INTO assesment(patient_id, staff_id, symptoms, signs, date, time) VALUES('".$p_id."', '".$this->getStaffID()."','".$symptoms."', '".$signs."', CURDATE(), CURTIME())";
         $result = $mysqli->query($query);
         if($result){
             echo json_encode([true, "saved successfuly", "success", "assesment"]);
@@ -406,9 +443,9 @@ class Doctor{
     /************************************************************************************************************************************************/
     
     /************************************************************************************************************************************************/
-    function saveInjections($mysqli, $p_id, $s_id, $injections)
+    function saveInjections($mysqli, $p_id, $injections)
     {
-        $query = "INSERT INTO plan(patient_id, staff_id, injections, date, time) VALUES('".$p_id."', '".$s_id."','".$injections."', CURDATE(), CURTIME())";
+        $query = "INSERT INTO plan(patient_id, staff_id, injections, date, time) VALUES('".$p_id."', '".$this->getStaffID()."','".$injections."', CURDATE(), CURTIME())";
         $result = $mysqli->query($query);
         if($result){
             echo json_encode([true, "saved successfuly", "success", "injections"]);
@@ -417,9 +454,9 @@ class Doctor{
         }
     }
     /************************************************************************************************************************************************/
-    function saveProcedures($mysqli, $p_id, $s_id, $procedure, $investigation)
+    function saveProcedures($mysqli, $p_id, $procedure, $investigation)
     {
-        $query = "INSERT INTO investigations(patient_id, staff_id, investigation, procedures, time, date) VALUES('".$p_id."', '".$s_id."', '".$investigation."', '".$procedure."', CURTIME(), CURDATE())";
+        $query = "INSERT INTO investigations(patient_id, staff_id, investigation, procedures, time, date) VALUES('".$p_id."', '".$this->getStaffID()."', '".$investigation."', '".$procedure."', CURTIME(), CURDATE())";
         $result = $mysqli->query($query);
         if($result){
             echo json_encode([true, "saved successfuly", "success", "procedures"]);
@@ -428,9 +465,9 @@ class Doctor{
         }
     }
     /************************************************************************************************************************************************/
-    function savePrescription($mysqli, $p_id, $s_id, $prescription)
+    function savePrescription($mysqli, $p_id, $prescription)
     {
-        $query = "INSERT INTO prescription(patient_id, staff_id, prescription, time, date) VALUES('".$p_id."', '".$s_id."', '".$prescription."', CURTIME(), CURDATE())";
+        $query = "INSERT INTO prescription(patient_id, staff_id, prescription, time, date) VALUES('".$p_id."', '".$this->getStaffID()."', '".$prescription."', CURTIME(), CURDATE())";
         $result = $mysqli->query($query);
         if($result){
             echo json_encode([true, "saved successfuly", "success", "prescription"]);

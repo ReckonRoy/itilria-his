@@ -11,7 +11,7 @@ let patient = {
 	injections_form: document.getElementById("injections-form"),
 	procedures_form: document.getElementById("procedures-form"),
 	prescription_form: document.getElementById("prescription-form"),
-
+	staff_id: document.getElementById('staff-id'),
 
 
 	patient_id: null,
@@ -38,27 +38,48 @@ let patient = {
 				patient.xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 				if(patient.notes_form.name == "notes_form")
 				{
-					patient.xhr.send(patient.patient_id+"=" + patient.notes_form.notes_pid.value+"&"+patient.notes_form.doctors_notes.name+"="+patient.notes_form.doctors_notes.value);
+					patient.xhr.send(
+						patient.patient_id+"=" + patient.notes_form.notes_pid.value
+						+"&"+patient.staff_id.name+"="+patient.staff_id.value
+						+"&"+patient.notes_form.doctors_notes.name+"="+patient.notes_form.doctors_notes.value);
 				}else if(patient.assesment_form.name == "assesment_form")
 				{
 					var signs_name = patient.assesment_form.signs.name;
 					var signs_value = patient.assesment_form.signs.value;
-					patient.xhr.send(patient.patient_id+"="+patient.assesment_form.asses_pid.value+"&"+patient.assesment_form.symptoms.name+"="+patient.assesment_form.symptoms.value+"&"+signs_name+"="+signs_value);
+					patient.xhr.send(
+						patient.patient_id+"="+patient.assesment_form.asses_pid.value
+						+"&"+patient.staff_id.name+"="+patient.staff_id.value
+						+"&"+patient.assesment_form.symptoms.name+"="+patient.assesment_form.symptoms.value
+						+"&"+signs_name+"="+signs_value
+						);
 				}else if(patient.injections_form.name == "injections_form"){
 					var injections_name = patient.injections_form.injections.name;
 					var injections_value = patient.injections_form.injections.value;
-					patient.xhr.send(patient.patient_id+"="+patient.injections_form.injections_pid.value+"&"+injections_name+"="+injections_value);
+					patient.xhr.send(
+						patient.patient_id+"="+patient.injections_form.injections_pid.value
+						+"&"+patient.staff_id.name+"="+patient.staff_id.value
+						+"&"+injections_name+"="+injections_value
+						);
 				}else if(patient.procedures_form.name == "procedures_form"){
 					var investigation_name = patient.procedures_form.investigation.name;
 					var investigation_value = patient.procedures_form.investigation.value;
 					var procedures_name = patient.procedures_form.procedures.name;
 					var procedures_value = patient.procedures_form.procedures.value;
-					patient.xhr.send(patient.patient_id+"="+patient.procedures_form.proc_pid.value+"&"+investigation_name+"="+investigation_value+"&"+procedures_name+"="+procedures_value);
+					patient.xhr.send(
+						patient.patient_id+"="+patient.procedures_form.proc_pid.value
+						+"&"+patient.staff_id.name+"="+patient.staff_id.value
+						+"&"+investigation_name+"="+investigation_value
+						+"&"+procedures_name+"="+procedures_value
+						);
 				}else if(patient.prescription_form.name == "prescription_form"){
 					var prescription_name = patient.prescription_form.prescription.name;
 					var prescription_value = patient.prescription_form.prescription.value;
 		
-					patient.xhr.send(patient.patient_id+"="+patient.prescription_form.presc_pid.value+"&"+prescription_name+"="+prescription_value);
+					patient.xhr.send(
+						patient.patient_id+"="+patient.prescription_form.presc_pid.value
+						+"&"+patient.staff_id.name+"="+patient.staff_id.value
+						+"&"+prescription_name+"="+prescription_value
+						);
 				}
 
 

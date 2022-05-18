@@ -24,6 +24,8 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 <!--/**********************************************************************************************************
 TABLE CONTAINING PRESCRIPTION DETAILS
 ************************************************************************************************************/-->
+		<!--Pass staff id to server -->
+		<input type="hidden" name="staff_id" value="<?php echo $_SESSION['user_id']?>" id="staff-id">
 		<input type="button" value="Close" id="close-print-btn">
 		<input type="button" value="Print" id="print-btn">
 		<div id="enlarged-img-div">
@@ -83,6 +85,8 @@ TABLE CONTAINING PRESCRIPTION DETAILS
 <!----------------------------------------------------PATIENT EMR SECTION-------------------------------------------------------->
 		<div id="emr-container">
 			<div id="emr-record-div"></div>
+			<div id="emr-rd-div">
+			</div>
 			<div id="emr-chargesheet">
 			<img src="" alt="placeholder+image" id="chargesheet-image">
 			<form>
