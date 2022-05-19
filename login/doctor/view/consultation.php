@@ -88,14 +88,11 @@ TABLE CONTAINING PRESCRIPTION DETAILS
 		<div id="emr-container">
 			<!-- Patient Medical Record-->
 			<div id="emr-record-div"></div>
-<<<<<<< HEAD
 
 			<!-- Patient Record List By dates -->
-			<div id="medical-r-d"></div>
-=======
 			<div id="emr-rd-div">
 			</div>
->>>>>>> records
+
 			<div id="emr-chargesheet">
 			<img src="" alt="placeholder+image" id="chargesheet-image">
 			<form>

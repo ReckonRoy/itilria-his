@@ -24,6 +24,7 @@ let profileObject = {
 
 		profileObject.profile_btn.onclick = function()
 		{
+			alert("clicked");
 			window.location.href = "./profile.php";
 		};		
 	}
