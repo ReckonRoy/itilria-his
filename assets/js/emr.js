@@ -3,11 +3,14 @@ let emr = {
 	patient_id: document.getElementById("patientID-field"),
 	emr_parent_div: document.getElementById("emr-container"),
 	emr_e_d: document.getElementById("emr-record-div"),
+	emr_date: document.getElementById('emr-rd-div'),
 	date_table: document.getElementById("date_table"),
 	close_btn: document.getElementById("close"),
-
+	overlay: document.getElementById('overlay'),
+	access_option: null,
 	xhr: null,
 	url: null,
+	record_date: null,
 
 	createXHR: function()
 	{
@@ -30,8 +33,23 @@ let emr = {
 				emr.xhr.open("POST", emr.url, true);
 				emr.xhr.onreadystatechange = emr.response;
 				emr.xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-				emr.xhr.send("patient_id=" + emr.patient_id.value);	
+				//access emr record when the emr button is clicked
+				if(emr.access_option == "emr_default_access")
+				{
+					emr.xhr.send(
+					"patient_id=" + emr.patient_id.value	
+					);
+
+				}else if(emr.access_option == "emr_access_date")//access the emr record when the date is selected
+				{
+					emr.xhr.send(
+					"p_id=" + emr.patient_id.value
+					+"&"+"record_date"+"="+emr.record_date	
+					);					
+
+				}	
 				document.body.style.cursor = "wait";
+				
 			}catch(e){
 				alert("Can't connect to server: " + e.toString());
 				document.body.style.cursor = "default";
@@ -46,14 +64,18 @@ let emr = {
 			document.body.style.cursor = "default";
 			if(emr.xhr.status == 200){
 				try{
+					emr.emr_e_d.innerHTML = "";
 					let result = JSON.parse(emr.xhr.responseText);
 					if(result[0] == false)
 					{
 
-					}else if(result[0] == true){	
+					}else if((result[0] == true) && (result[3] == "emr_access")){	
 				
 						emr.content(emr.emr_e_d, result[1]);
-
+						emr.prd_container(emr.emr_date, result[2]);
+					}else if((result[0] == true) && (result[2] == "emr_access_date"))
+					{
+						emr.content(emr.emr_e_d, result[1]);
 					}
 				}catch(e){
 					alert("error reading response: " + e.toString());
@@ -68,7 +90,11 @@ let emr = {
 	runEmr: function()
 	{
 		emr.createXHR();
+		emr.overlay.style.display = "none";
 		emr.emr_btn.addEventListener("click", function(){
+			emr.access_option = "emr_default_access";
+			emr.emr_date.innerHTML = "";
+			emr.overlay.style.display = "block";
 			emr.request();
 		});
 	},
@@ -78,6 +104,7 @@ let emr = {
 		emr.close_btn.addEventListener("click", function(){
 			if(emr.emr_parent_div.style.display == "grid"){
 				emr.emr_parent_div.style.display = "none";
+				emr.overlay.style.display = "none";
 			}
 		});
 
@@ -90,6 +117,48 @@ let emr = {
 
 	},
 
+	/**
+	 * prdc: patient record by date container
+	 * this function displays the patients records by date
+	 * it enables the user to select patient record based on a certain recorded date
+	 */
+	prd_container: function (parent, dates) {
+		var table = document.createElement("table");
+		table.className = "record_table_class";
+		var thead = document.createElement("thead");
+		var th = document.createElement("th");
+		th.appendChild(document.createTextNode("Patient Record(s)"));
+		thead.appendChild(th);
+		table.appendChild(thead);
+		for(var i = 0; i < dates.length; i++)
+		{
+			var tr = document.createElement("tr");
+			var td = document.createElement("td");
+			tr.appendChild(td);
+			td.appendChild(document.createTextNode(dates[i]));
+			table.appendChild(tr);
+			emr.record_by_date(td);	
+		}
+	
+		parent.appendChild(table);
+
+		
+	},
+
+	//handle click events on the dates
+	record_by_date: function(date_param)
+	{
+		date_param.addEventListener("click", function()
+		{
+			emr.access_option = "emr_access_date";
+			emr.record_date = date_param.textContent;
+			emr.request();
+		});
+	},
+	/**
+	 * Content div: displays the patient file 
+	 * record is in tabular format
+	 */
 	content: function(container, record)
 	{
 		var table = document.createElement("table");

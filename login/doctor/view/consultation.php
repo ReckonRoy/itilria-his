@@ -21,9 +21,13 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 	</head>
 	<body>
 
+		<!-- Overlay -->
+		<div id="overlay"></div>
 <!--/**********************************************************************************************************
 TABLE CONTAINING PRESCRIPTION DETAILS
 ************************************************************************************************************/-->
+		<!--Pass staff id to server -->
+		<input type="hidden" name="staff_id" value="<?php echo $_SESSION['user_id']?>" id="staff-id">
 		<input type="button" value="Close" id="close-print-btn">
 		<input type="button" value="Print" id="print-btn">
 		<div id="enlarged-img-div">
@@ -84,9 +88,14 @@ TABLE CONTAINING PRESCRIPTION DETAILS
 		<div id="emr-container">
 			<!-- Patient Medical Record-->
 			<div id="emr-record-div"></div>
+<<<<<<< HEAD
 
 			<!-- Patient Record List By dates -->
 			<div id="medical-r-d"></div>
+=======
+			<div id="emr-rd-div">
+			</div>
+>>>>>>> records
 			<div id="emr-chargesheet">
 			<img src="" alt="placeholder+image" id="chargesheet-image">
 			<form>
@@ -94,7 +103,7 @@ TABLE CONTAINING PRESCRIPTION DETAILS
 				<input type="button" value="Get chargesheet" id="chargesheet-btn">
 			</form>
 			</div>
-			<div id="close">close</div>
+			<input type="button" id="close" value="X">
 		</div>
 	<main>
 <!--******************************************************************************************************************************* *div for patient details
@@ -108,7 +117,7 @@ TABLE CONTAINING PRESCRIPTION DETAILS
 			
 				<div id="search-container"><!-- form for searching patient -->
 					<form id="search-form" name="doctor_search_form">
-						<input type="text" id="search-field" placeholder="Type here to begin search..." name="search_field">
+						<input type="text" id="search-field" placeholder="Please enter patient clinical ID" name="search_field">
 					</form>
 					<div id="search-results"><!-- div for resulta of search -->
 						<p>search results will appear hear</p>
