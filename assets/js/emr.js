@@ -94,6 +94,7 @@ let emr = {
 		emr.emr_btn.addEventListener("click", function(){
 			emr.access_option = "emr_default_access";
 			emr.emr_date.innerHTML = "";
+			emr.overlay.style.display = "block";
 			emr.request();
 		});
 	},
@@ -103,6 +104,7 @@ let emr = {
 		emr.close_btn.addEventListener("click", function(){
 			if(emr.emr_parent_div.style.display == "grid"){
 				emr.emr_parent_div.style.display = "none";
+				emr.overlay.style.display = "none";
 			}
 		});
 
