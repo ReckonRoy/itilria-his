@@ -29,7 +29,7 @@ let profileSettingsObject = {
 		if(profileSettingsObject.xhr)
 		{
 			try{
-				profileSettingsObject.url = "../../user/control/UserController.php";
+				profileSettingsObject.url = "../user/control/UserController.php";
 				profileSettingsObject.xhr.open("POST", profileSettingsObject.url, true);
 				profileSettingsObject.xhr.onreadystatechange = profileSettingsObject.response;
 				profileSettingsObject.xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

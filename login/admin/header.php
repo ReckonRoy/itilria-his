@@ -6,7 +6,7 @@
 			</div>	
 			<div id="profile-menu-div">
 				<ul>
-					<li>Profile</li>
+					<li id="profile-btn">Profile"</li>
 					<li>Settings</li>
 					<li id="logout-btn">Log out</li>
 				</ul>	

@@ -19,7 +19,7 @@ let profileObject = {
 		
 		profileObject.logout_btn.onclick = function()
 		{
-			window.location.href = "../../logout.php";
+			window.location.href = "../logout.php";
 		};
 
 		profileObject.profile_btn.onclick = function()

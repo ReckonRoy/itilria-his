@@ -204,6 +204,7 @@ TABLE CONTAINING PRESCRIPTION DETAILS
 						<div class="clear_float"></div>
 						</div>
 					</form>
+					
 				</div>
 				<!--
 				Notes:
@@ -221,7 +222,15 @@ TABLE CONTAINING PRESCRIPTION DETAILS
 		?>
 			<footer></footer>
 		</div>		
-		
+		<?php
+			//$prev_location = $_SERVER['HTTP_REFERER'];
+			//$prev_location = substr($prev_location, stripos($prev_location, "doctor"), strlen("doctor"));
+			//$prev_location;
+			//$current_page = $_SERVER['SCRIPT_NAME'];
+			$current_page = $_SERVER['SCRIPT_NAME'];
+		?>
+		<input type="hidden" id="curr_page" value="<?php substr($current_page, stripos($current_page, "doctor")); ?>">
+
 		<script type="text/javascript" src="../../../assets/js/search.js"></script>
 		<script type="text/javascript" src="../../../assets/js/vitals.js"></script>
 		<script type="text/javascript" src="../../../assets/js/doctor/doctor.js"></script>

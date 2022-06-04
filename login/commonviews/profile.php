@@ -1,11 +1,31 @@
 <?php 
     session_start();
-    if((!isset($_SESSION['user_level'])) or ($_SESSION['user_level'] !=4))
+
+    $user_level_array = array(1, 2, 3, 4);
+
+    switch($_SESSION['user_level'])
     {
-        header('Location: '."../../../login.php");
+    	case 1:
+    		$user_pr = "admin";
+    		break;
+    	case 2:
+    		$user_pr = "doctor";
+    		break;
+    	case 3:
+    		$user_pr = "nurse";
+    		break;
+    	case 4:
+    		$user_pr = "receptionist";
+    		break;
     }
-    require '../../../config/config.php';
-    require '../../user/User.php';
+
+    if((!isset($_SESSION['user_level'])) or ($_SESSION['user_level'] !=2))
+	{
+    	header('Location: '.'../../login.php');
+	}
+
+    require '../../config/config.php';
+    require '../user/User.php';
     $user = new User();
     $user->getUserResults($mysqli, $_SESSION['user_id']);
 ?>
@@ -15,8 +35,8 @@
 	<?php
 		require './head.php';
 	?>
-	<link rel="stylesheet" type="text/css" href="../../../assets/css/reception/patientreg.css">
-	<link rel="stylesheet" type="text/css" href="../../../assets/css/reception/profilesettings.css">
+	<link rel="stylesheet" type="text/css" href="../../assets/css/reception/patientreg.css">
+	<link rel="stylesheet" type="text/css" href="../../assets/css/reception/profilesettings.css">
 </head>
 <body>
 
@@ -30,9 +50,17 @@
 <?php
 	require './header.php';
 ?>
+	
 <?php
-	require './aside.php';
+	if($_SESSION['user_level'] == 2)
+	{
+    	require '../doctor/view/aside.php';
+	}else if($_SESSION['user_level'] == 4)
+	{
+    	require '../reception/view/aside.php';
+	}
 ?>
+
 <main id="">
 	<h2 id="main-header">Profile Settings</h2>
 	<div id="ps-div">
@@ -81,9 +109,28 @@
 			<input type="password" name="confirm_pwd" class="fields">
 			<input type="button" value="Change password" class="button-class" id="cpwd-btn">
 		</form>
+		<?php 
+			echo $user_pr;
+		?>
 	</div>
 </main>
-<script type="text/javascript" src="../../../assets/js/reception/main.js"></script>
-<script type="text/javascript" src="../../../assets/js/common/profilesettings.js"></script>
+
+<?php
+	//$prev_location = $_SERVER['HTTP_REFERER'];
+	//$prev_location = substr($prev_location, stripos($prev_location, "doctor"), strlen("doctor"));
+	//$prev_location;
+	//$current_page = $_SERVER['SCRIPT_NAME'];
+	$current_page = $_SERVER['SCRIPT_NAME'];
+	?>
+	<input type="hidden" id="curr_page" value="<?php echo substr($current_page, stripos($current_page, "profile")); ?>">
+	
+	<?php
+		if($_SESSION['user_level'] == 2)
+	{?>
+		<script type="text/javascript" src="../../assets/js/doctor/main.js"></script>	
+	<?php 
+	}
+?>
+<script type="text/javascript" src="../../assets/js/common/profilesettings.js"></script>
 </body>
 </html>
