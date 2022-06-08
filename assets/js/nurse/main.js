@@ -1,16 +1,72 @@
+//Profile Object Manages the user profile menu and user related profile navigation
+let profileObject = {
+	profile_m_div: document.getElementById("profile-menu-div"),
+	avatar: document.getElementById("avatar-div"),
+	logout_btn: document.getElementById("logout-btn"),
+	profile_btn: document.getElementById('profile-btn'),
+	current_page: document.getElementById('curr_page'),
+
+	profile_m: function()
+	{
+		profileObject.profile_m_div.style.display = "none";
+		profileObject.avatar.addEventListener("click", function(){
+			if(profileObject.profile_m_div.style.display == "none")
+			{
+				profileObject.profile_m_div.style.display = "block";
+			}else{
+				profileObject.profile_m_div.style.display = "none";
+			}
+		});
+		
+		profileObject.logout_btn.onclick = function()
+		{
+			if(profileObject.current_page.value == "profile.php")
+			{
+				window.location.href = "../logout.php";	
+			}else{
+				window.location.href = "../../logout.php";
+			}
+		};
+
+		profileObject.profile_btn.onclick = function()
+		{
+			if(profileObject.current_page.value == "profile.php")
+			{
+				window.location.href = "./profile.php";	
+			}else{
+				window.location.href = "../../commonviews/profile.php";
+			}	
+		}
+	}
+}
+
 let asideObject = {
 	appointment_tab: document.getElementById("appointment-btn"),
 	vital_tab: document.getElementById("vital-btn"),
+	current_page: document.getElementById('curr_page'),
 
 	clickAction: function(){
 		this.appointment_tab.addEventListener("click", function(){
-			window.location.href = "./admin.php";
+			//determine the page we are currently executing this script from and choose the appropriate action to take	
+			if(asideObject.current_page.value == "profile.php")
+			{			
+				window.location.href = "../nurse/view/vitals.php";
+			}else{
+				window.location.href = "./vitals.php";
+			}
 		});
 
 		this.vital_tab.addEventListener("click", function(){
-			window.location.href = "./vitals.php";
+			//determine the page we are currently executing this script from and choose the appropriate action to take	
+			if(asideObject.current_page.value == "profile.php")
+			{			
+				window.location.href = "../nurse/view/vitals.php";
+			}else{
+				window.location.href = "./vitals.php";
+			}
 		});
 	} 
 }
 
+profileObject.profile_m();
 asideObject.clickAction(); 

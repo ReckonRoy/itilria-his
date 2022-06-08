@@ -101,28 +101,18 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 ?>
 	<footer></footer>
 </div>
+
+<?php
+	//$prev_location = $_SERVER['HTTP_REFERER'];
+	//$prev_location = substr($prev_location, stripos($prev_location, "doctor"), strlen("doctor"));
+	//$prev_location;
+	//$current_page = $_SERVER['SCRIPT_NAME'];
+	$current_page = $_SERVER['SCRIPT_NAME'];
+?>
+<input type="hidden" id="curr_page" value="<?php substr($current_page, stripos($current_page, "nurse")); ?>">
+
 <script type="text/javascript" src="../../../assets/js/search.js"></script>	
 <script type="text/javascript" src="../../../assets/js/nurse/nurse.js"></script>
 <script type="text/javascript" src="../../../assets/js/nurse/main.js"></script>		
-<script type="text/javascript">
-	var profile_m_div = document.getElementById("profile-menu-div");
-	var avatar = document.getElementById("avatar-div");
-	var logout_btn = document.getElementById("logout-btn");
-	profile_m_div.style.display = "none";
-	
-	avatar.addEventListener("click", function(){
-		if(profile_m_div.style.display == "none")
-		{
-			profile_m_div.style.display = "block";
-		}else{
-			profile_m_div.style.display = "none";
-		}
-	});
-	
-	logout_btn.onclick = function()
-	{
-		window.location.href = "../../logout.php";
-	};
-</script>
 </body>
 </html>

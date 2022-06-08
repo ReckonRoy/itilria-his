@@ -1,6 +1,16 @@
 <aside>
 	<div id="co-nldiv">
-		<img src="../../../assets/img/favicon-128.png">
+		<?php
+			$file_name = $_SERVER['SCRIPT_NAME'];
+		if($file_name=='/cliniccare/login/commonviews/profile.php')
+			{?>
+			<img src="../../assets/img/favicon-128.png">	
+			<?php
+		}else{?>
+			<img src="../../../assets/img/favicon-128.png">	
+		<?php
+		}
+		?>
 		<span id="company-name">ITilria</span>
 	</div>
 	<hr/>

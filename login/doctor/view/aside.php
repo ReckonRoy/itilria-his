@@ -15,21 +15,7 @@
 	</div>
 	<hr>
 	<ul>
-		<?php
-		if($file_name=='/cliniccare/login/commonviews/profile.php')
-		{?>
-			<input type="hidden" id="page-state" value="<?php echo $file_name; ?>">
-			<li><input type="button" value="Appointments" id="appointment-btn-profile-view" class="aside-btn"></li>
-			<li><input type="button" value="Consultation" id ="consultation-btn-profile-view" class="aside-btn"></li>	
-		<?php
-		}else{
-		?>	
-			<input type="hidden" id="page-state" value="<?php echo $file_name; ?>">
-			<li><input type="button" value="Appointments" id="appointment-btn" class="aside-btn"></li>
-			<li><input type="button" value="Consultation" id ="consultation-btn" class="aside-btn"></li>	
-		<?php
-			}
-		?>
-		
+		<li><input type="button" value="Appointments" id="appointment-btn" class="aside-btn"></li>
+		<li><input type="button" value="Consultation" id ="consultation-btn" class="aside-btn"></li>		
 	</ul>
 </aside>

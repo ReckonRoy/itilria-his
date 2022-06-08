@@ -19,7 +19,7 @@
     		break;
     }
 
-    if((!isset($_SESSION['user_level'])) or ($_SESSION['user_level'] !=2))
+    if(!isset($_SESSION['user_level']))
 	{
     	header('Location: '.'../../login.php');
 	}
@@ -55,6 +55,9 @@
 	if($_SESSION['user_level'] == 2)
 	{
     	require '../doctor/view/aside.php';
+	}else if($_SESSION['user_level'] == 3)
+	{
+		require '../nurse/view/aside.php';
 	}else if($_SESSION['user_level'] == 4)
 	{
     	require '../reception/view/aside.php';
@@ -129,6 +132,14 @@
 	{?>
 		<script type="text/javascript" src="../../assets/js/doctor/main.js"></script>	
 	<?php 
+	}else if($_SESSION['user_level'] == 3)
+	{?>
+		<script type="text/javascript" src="../../assets/js/nurse/main.js"></script>
+	<?php
+	}else if($_SESSION['user_level'] == 4)
+	{?>
+		<script type="text/javascript" src="../../assets/js/reception/main.js"></script>
+	<?php
 	}
 ?>
 <script type="text/javascript" src="../../assets/js/common/profilesettings.js"></script>
