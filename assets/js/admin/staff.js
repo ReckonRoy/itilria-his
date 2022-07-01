@@ -15,21 +15,38 @@ let tabs = {
 	register_btn: document.getElementById("reg-btn"),
 	url: null,
 
+	tabState: function(activeTab, state)
+	{
+		if(state == true){
+			activeTab.style.backgroundColor = "red";
+			activeTab.style.color = "white";
+			activeTab.style.border = "2px solid black";
+		}else if(state == false)
+		{
+			activeTab.style.backgroundColor = "skyblue";
+			activeTab.style.color = "grey";
+			activeTab.style.border = "2px solid grey";
+		}
+	},
+
 	manageTabs: function()
 	{
 		/*-----------------------------------------------------------------------------------------------------------------
 		*Register tab
 		-----------------------------------------------------------------------------------------------------------------*/
+		tabs.tabState(tabs.register_tab, true);
 		this.register_tab.addEventListener("click", function()
 		{
-			tabs.reg_container.style.display = "block";
-
+			tabs.reg_container.style.display = "block";	
+			tabs.tabState(tabs.register_tab, true);	
 			if(tabs.reg_container.style.display == "none")
 			{
 				tabs.reg_container.style.display = "block";
 			}else{
 				tabs.update_container.style.display = "none";
 				tabs.delete_container.style.display = "none";
+				tabs.tabState(tabs.update_tab, false);
+				tabs.tabState(tabs.delete_tab, false);
 			}
 		});
 		 /*-----------------------------------------------------------------------------------------------------------------
@@ -38,13 +55,16 @@ let tabs = {
 		this.update_tab.addEventListener("click", function()
 		{
 			tabs.update_container.style.display = "block";
+			tabs.tabState(tabs.update_tab, true);
 			if(tabs.update_container.style.display == "none")
 			{
 				tabs.update_container.style.display = "block";
-			}
+			}else{
 				tabs.reg_container.style.display = "none";
 				tabs.delete_container.style.display = "none";
-			
+				tabs.tabState(tabs.register_tab, false);
+				tabs.tabState(tabs.delete_tab, false);
+			}
 		});
 
 		/*-----------------------------------------------------------------------------------------------------------------
@@ -53,13 +73,16 @@ let tabs = {
 		this.delete_tab.addEventListener("click", function()
 		{
 			tabs.delete_container.style.display = "block";
+			tabs.tabState(tabs.delete_tab, true);
 			if(tabs.delete_container.style.display == "none")
 			{
 				tabs.delete_container.style.display = "block";
-			}
+			}else{
 				tabs.reg_container.style.display = "none";
 				tabs.update_container.style.display = "none";
-			
+				tabs.tabState(tabs.register_tab, false);
+				tabs.tabState(tabs.update_tab, false);
+			}
 		});
 	},
 

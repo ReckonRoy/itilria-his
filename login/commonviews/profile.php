@@ -52,7 +52,10 @@
 ?>
 	
 <?php
-	if($_SESSION['user_level'] == 2)
+	if($_SESSION['user_level'] == 1)
+	{
+    	require '../admin/aside.php';
+	}else if($_SESSION['user_level'] == 2)
 	{
     	require '../doctor/view/aside.php';
 	}else if($_SESSION['user_level'] == 3)
@@ -127,8 +130,13 @@
 	?>
 	<input type="hidden" id="curr_page" value="<?php echo substr($current_page, stripos($current_page, "profile")); ?>">
 	
-	<?php
-		if($_SESSION['user_level'] == 2)
+	<?php 
+	if($_SESSION['user_level'] == 1){
+	?>
+		<script type="text/javascript" src="../../assets/js/admin/main.js"></script>	
+	<?php	
+	}
+		else if($_SESSION['user_level'] == 2)
 	{?>
 		<script type="text/javascript" src="../../assets/js/doctor/main.js"></script>	
 	<?php 

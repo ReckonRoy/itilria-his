@@ -125,7 +125,7 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 						<p>
 							Delete this employee from your system
 						</p>
-						<p>Employee: <span id="d-fn">full name<span></p>
+						<p>Employee: <span id="d-fn">full name</span></p>
 						<form method="post"  id="delete-s-form" action="../deleteProcess.php">
 						<input type="hidden" name="id_field">
 						<button>Yes, delete employee</button>
@@ -141,9 +141,18 @@ $user->getUserResults($mysqli, $_SESSION['user_id']);
 		?>
 		<footer></footer>
 		</div>	
+<?php
+	//$prev_location = $_SERVER['HTTP_REFERER'];
+	//$prev_location = substr($prev_location, stripos($prev_location, "doctor"), strlen("doctor"));
+	//$prev_location;
+	//$current_page = $_SERVER['SCRIPT_NAME'];
+	$current_page = $_SERVER['SCRIPT_NAME'];
+?>
+<input type="hidden" id="curr_page" value="<?php substr($current_page, stripos($current_page, "doctor")); ?>">
+
+<script type="text/javascript" src="../../assets/js/admin/main.js"></script>
 <script type="text/javascript" src="../../assets/js/admin/searchUser.js"></script>
 <script type="text/javascript" src="../../assets/js/admin/staff.js"></script>
-<?php
-	require "./footer.php";
-?>
+</body>
+</html>
 		

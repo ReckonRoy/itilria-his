@@ -2,7 +2,7 @@
 	<nav id="main-nav">
 		<div id="avatar-pdiv">
 			<div id="avatar-div">
-				<?php echo $user->getInitials() ;?>
+				<?php echo $user->getInitials(); ?>
 			</div>	
 			<div id="profile-menu-div">
 				<ul>

@@ -48,7 +48,6 @@ let asideObject = {
 	clickAction: function(){
 		
 		asideObject.appointment_tab.addEventListener("click", function(){
-
 			//determine the page we are currently executing this script from and choose the appropriate action to take
 			if(asideObject.current_page == "profile.php")
 			{
@@ -56,7 +55,6 @@ let asideObject = {
 			}else{
 				window.location.href = "./appointment.php";
 			}
-			
 		});
 	
 		asideObject.consultation_tab.addEventListener("click", function(){

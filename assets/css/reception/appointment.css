@@ -57,7 +57,9 @@
 	grid-column: 1/3;
 
 }
-
+/*-----------------------------------------------------------------------------------------------------------------------
+*Scheduling style section
+-----------------------------------------------------------------------------------------------------------------------*/
 #schedule-div{
 	display: block;
 	width: 70%;
@@ -70,26 +72,30 @@
 {
 	display: block;
 	width: 80%;
-	margin-left: 10%;
 	margin-top: 20px;
 }
-
+/*
+--------schedule search field - search text field
+*/
 #schedule-search-field{
-	width: 100%;
+	width: 90%;
 	padding: 10px 0;
-	padding-left: 5px;
 	box-sizing: border-box;
+	margin-left: 5%;
 }
-
+/*
+--------result box where search results will appear
+*/
 #schedule-box-results{
-	display: none;
+	display: block;
 	box-sizing: border-box;
 	border: 1px solid gray;
 	background-color: lightgrey;
-	width: 100%;
+	width: 90%;
 	margin-top: 10px;
 	padding-left: 10px;
 	line-height: 1.5em;
+	margin-left: 5%;
 }
 
 #schedule-box-results ol{
@@ -107,9 +113,11 @@
 	background-color: gray;
 	color: white;
 }
-
+/*
+------------schedule date 
+*/
 #sch-date-control{
-	display: none;/*this is a grid*/
+	display: grid;/*this is a grid*/
 	grid-template-columns: 1fr 1fr;
 	border: 1px solid black;
 	padding: 10px 0;
@@ -142,7 +150,7 @@
 }
 
 #sch-schedule-parent{
-	display: none;/*This is a grid*/
+	display: grid;/*This is a grid*/
 	grid-template-columns: 60% 40%;
 	margin-top: 50px;
 	margin-bottom: 20px;
@@ -179,7 +187,7 @@ hr{
 	width: 100%;
 }
 #purpose-section{
-	display: none;
+	display: block;
 	background-color: gray;
 	box-sizing: border-box;
 	padding: 20px 10px;
@@ -210,7 +218,7 @@ hr{
 }
 
 #sch-btn-div{
-	display: none;
+	display: block;
 	margin-top: 20px;
 	box-sizing: border-box;
 	padding-left: 10px;

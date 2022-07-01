@@ -16,12 +16,13 @@
     /*This class serves a purpose of getting the currently logged person general details or the person who is being search from the database */ 
     function getUserResults($mysqli, $id)
     {
-        $query = "SELECT * FROM credentials AS c INNER JOIN user AS u ON c.id=u.credential_id INNER JOIN employee_details AS e ON c.id=e.credential_id WHERE c.id='".$id."'";
+        $query = "SELECT * FROM credentials AS c INNER JOIN user AS u ON c.id=u.credential_id WHERE c.id='".$id."'";
+        //INNER JOIN employee_details AS e ON c.id=e.credential_id
         $result = $mysqli->query($query);
         if($result->num_rows == 1)
         {
             $row = $result->fetch_array(MYSQLI_ASSOC);
-            $this->id =$row['id'];
+            $this->id = $row['id'];
             $this->password = $row['password'];
             $this->name = $row['name'];
             $this->surname = $row['surname'];

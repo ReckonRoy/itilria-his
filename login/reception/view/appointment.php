@@ -80,7 +80,12 @@
 			<!-- Heading; Instruction and how to proceed -->
 			<h2 id="schedule-bs-h2">Please choose the Year, Month and then click proceed to continue booking patient</h2>
 			<div id="sch-bs-year">
-				<input type="number" placeholder="example 2022" id="sch-year-field">
+				<ul>
+					<li>january 2022</li>
+					<li>febuary 2022</li>
+					<li>march 2022</li>
+					<li>april 2022</li>
+				</ul>
 			</div>
 			<div>
 				<input type="text" id="sch-month-field" placeholder="Select month">

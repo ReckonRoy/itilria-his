@@ -68,13 +68,17 @@ staff regitration style section
 
 #staff-nav > button{
 	border: 2px solid grey;
-	background-color: aquamarine;
+	background-color: skyblue;
 	padding: 10px 0;
 	width: 100px;
 	height: 50px;
 	border-radius: 25px;
 	font-weight: bold;
 	color: grey;
+}
+
+#register-tab{
+	background-color: red;
 }
 
 #staff-nav > button:hover{
@@ -85,7 +89,7 @@ staff regitration style section
 }
 
 #reg-content-div{
-	display: none;
+	display: block;
 	width: 100%;
 	margin-top: 50px;
 	box-sizing: border-box;
