@@ -30,7 +30,7 @@ class BookingAppointment
             array_push($dates_array, $displaydate);
         }
         
-        json_encode([true, $dates_array]);
+        echo json_encode([true, $dates_array]);
     }
 }
 

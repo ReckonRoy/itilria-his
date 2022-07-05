@@ -79,16 +79,13 @@
 		<div id="sch-date-control">
 			<!-- Heading; Instruction and how to proceed -->
 			<h2 id="schedule-bs-h2">Please choose the Year, Month and then click proceed to continue booking patient</h2>
-			<div id="sch-bs-year">
-				<ul>
-					<li>january 2022</li>
-					<li>febuary 2022</li>
-					<li>march 2022</li>
-					<li>april 2022</li>
-				</ul>
+			<!-- List months and years -->
+			<div id="sch-month-year">
+				
 			</div>
-			<div>
-				<input type="text" id="sch-month-field" placeholder="Select month">
+			<!-- Select day from particular month under a particular year-->
+			<div id="sch-date-select">
+				
 			</div>
 		</div>
 		
