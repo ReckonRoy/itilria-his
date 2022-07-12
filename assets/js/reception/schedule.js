@@ -133,8 +133,13 @@ class Appointment{
 	{
 		listProperty.addEventListener("click", function()
 		{
-			alert(listProperty.textContent);
+			appointment.getDayValue(listProperty.textContent);
 		});
+	}
+
+	/*This function returns the day values under the selected month*/
+	getDayValue(day){
+		appointment.request();
 	}
 
 }
