@@ -28,6 +28,9 @@ tabs = {
 
 class Appointment{
 	schedule_mydate = document.getElementById('sch-month-year');
+	month_day = document.getElementById('sch-date-select');
+	month_day_value = null;
+	send_control = "default";
 	url = null;
 	xhr = null;
 	createXHR()
@@ -51,9 +54,17 @@ class Appointment{
 				appointment.xhr.onreadystatechange = appointment.response;
 				this.xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 				//send request
-				this.xhr.send(
+				if(appointment.send_control === "default"){
+					this.xhr.send(
 					"appointment=" + "appointment"	
 					);
+				}else if(appointment.send_control === "month_day")
+				{
+					this.xhr.send(
+					"month_day=" + appointment.month_day_value	
+					);
+				} 
+				
 				/**if(emr.access_option == "emr_default_access")
 				{
 					this.xhr.send(
@@ -86,8 +97,16 @@ class Appointment{
 			if(appointment.xhr.status == 200){
 				//get JSON results
 				let result = JSON.parse(appointment.xhr.responseText);
+				
 				if(result[0] == true){	
-					appointment.content(result[1]);
+					if(result[2] == "appointment")
+					{
+						appointment.content(result[1]);	
+					}else if(result[2] == "month_day")
+					{
+						alert(result[1]);
+					}
+					
 				}
 
 				/*try{
@@ -116,7 +135,6 @@ class Appointment{
 
 	content(date)
 	{
-		alert("hello world");
 		var ul = document.createElement('ul');
 		for (var count = 0; count < date.length; count++) {
 			var li = document.createElement('li');
@@ -139,6 +157,8 @@ class Appointment{
 
 	/*This function returns the day values under the selected month*/
 	getDayValue(day){
+		appointment.send_control = "month_day";
+		appointment.month_day_value = day;
 		appointment.request();
 	}
 
