@@ -78,14 +78,15 @@
 		
 		<div id="sch-date-control">
 			<!-- Heading; Instruction and how to proceed -->
-			<h2 id="schedule-bs-h2">Please choose the Year, Month and then click proceed to continue booking patient</h2>
+			<h2 class="schedule-bs-h2">Please choose the Month and Year then click to continue booking patient</h2>
 			<!-- List months and years -->
 			<div id="sch-month-year">
 				
-			</div>
-			<!-- Select day from particular month under a particular year-->
+			</div #sch-day-control>
+			
 			<div id="sch-date-select">
-				
+				<h2 class="schedule-bs-h2">Please choose the Month and Year then click to continue booking patient</h2>
+				<!-- Select day from particular month under a particular year-->
 			</div>
 		</div>
 		
@@ -119,14 +120,15 @@
 		<div id="purpose-section">
 			<hr/>
 			<h2>Please select one or more reasons for appointment</h2>
+			
 			<ul>
 				<li>
 					<label>See Doctor</label>
-					<input type="checkbox" value="see doctor">
+					<input type="checkbox" value="See doctor" name="option1" id="option1">
 				</li>
 				<li>
 					<label>Papsmear</label>
-					<input type="checkbox" value="Papsmear">
+					<input type="checkbox" value="Papsmear" name="option2" id="option2">
 				</li>
 			</ul>
 		</div>

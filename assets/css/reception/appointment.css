@@ -129,6 +129,21 @@
 	margin-top: 30px;
 }
 
+/*
+------------schedule day 
+*/
+#sch-day-control{
+	display: block;/*this is a block*/
+	box-sizing: border-box;
+	border: 1px solid black;
+	padding: 10px 0;
+	background-color: purple;
+	color: white;
+	font-weight: bold;
+	width: 78%;
+	margin-top: 30px;
+}
+
 .li_date{
 	padding: 5px 0;
 	padding-left: 10px;
@@ -139,7 +154,7 @@
 	background-color: green;
 }
 
-#schedule-bs-h2{
+.schedule-bs-h2{
 	text-align: center;
 	font-size: 16px;
 	grid-column: 1/3;

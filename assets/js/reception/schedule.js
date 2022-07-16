@@ -28,8 +28,13 @@ tabs = {
 
 class Appointment{
 	schedule_mydate = document.getElementById('sch-month-year');
-	month_day = document.getElementById('sch-date-select');
+	schedule_day = document.getElementById('sch-date-select');
+	schedule_btn = document.getElementById('sch-btn');
+	visit_reason1 = document.getElementById('option1');
+	visit_reason2 = document.getElementById('option2');
+	appointment_day = null;
 	month_day_value = null;
+	reason_array = [];
 	send_control = "default";
 	url = null;
 	xhr = null;
@@ -104,7 +109,7 @@ class Appointment{
 						appointment.content(result[1]);	
 					}else if(result[2] == "month_day")
 					{
-						alert(result[1]);
+						appointment.content_day(result[1]);
 					}
 					
 				}
@@ -141,17 +146,37 @@ class Appointment{
 			li.appendChild(document.createTextNode(date[count]));
 			li.className = "li_date";
 			ul.appendChild(li);
-			appointment.getDateValue(li);
+			appointment.getDateValue(li, "month_year_value");
 		}
 		
 		appointment.schedule_mydate.appendChild(ul);
 	}
 
-	getDateValue(listProperty)
+	content_day(day)
+	{
+		var ul = document.createElement('ul');
+		for (var count = 0; count < day.length; count++) {
+			var li = document.createElement('li');
+			li.appendChild(document.createTextNode(day[count]));
+			li.className = "li_date";
+			ul.appendChild(li);
+			appointment.getDateValue(li, "day_value");
+		}
+		
+		appointment.schedule_day.appendChild(ul);
+	}
+
+	getDateValue(listProperty, option)
 	{
 		listProperty.addEventListener("click", function()
 		{
-			appointment.getDayValue(listProperty.textContent);
+			if(option === "month_year_value")
+			{
+				appointment.getDayValue(listProperty.textContent);	
+			}else if(option === "day_value"){
+				appointment.appointment_day = listProperty.textContent;
+			}
+			
 		});
 	}
 
@@ -162,9 +187,38 @@ class Appointment{
 		appointment.request();
 	}
 
+	schedule_appointment()
+	{
+		appointment.schedule_btn.addEventListener("click", function()
+		{
+			
+			if(appointment.appointment_day !== null)
+			{
+				if ((appointment.visit_reason1.checked === true)  || appointment.visit_reason2.checked === true)
+				{
+					if(appointment.visit_reason1.checked)
+					{
+						appointment.reason_array.push(appointment.visit_reason1.value);	
+					}
+
+					if(appointment.visit_reason2.checked)
+					{
+						appointment.reason_array.push(appointment.visit_reason2.value);	
+					}
+										
+				}else{
+					alert("please select a reason for your visit");
+				}
+			}else{
+				alert("Please select an appointment day");
+			}
+		});
+	}
+
 }
 
 tabs.change_tab();
 let appointment = new Appointment();
 appointment.createXHR();
 appointment.request();
+appointment.schedule_appointment();

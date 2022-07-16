@@ -12,5 +12,7 @@ if(isset($_POST['appointment']))
     $month_day = $_POST["month_day"];
     $appointment = new BookingAppointment();
     $appointment->scheduleMonthDay($month_day);
+}else{
+    echo json_encode([false, "not set"]);
 }
 ?>
