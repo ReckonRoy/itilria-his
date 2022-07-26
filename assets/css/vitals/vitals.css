@@ -128,6 +128,7 @@ overlay, server response dialog dialog
 #rlist{
 	color: red;
 	font-size: 14px;
+	padding-left: 10px;
 }
 
 #rlist:hover{

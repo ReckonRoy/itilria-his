@@ -34,6 +34,28 @@
 		<button id="appointment-tab">Appointments</button><button id="schedule-tab">Schedule An Appointment</button>
 	</div>
 
+	<!--
+	*Side nav showing patient details and stats
+	-->
+	<div id="sch-right-pane">
+		<h2>STATS</h2>
+		<div>
+			<p>Patient Name: <label>Diana Wikilson</label></p>
+			<sp>future visits:  None</sp>
+		</div>
+		<!-- Number of bookings left-->
+		<div>
+			Number of booking allocations left // No more bookings allocations left
+		</div>
+		<!-- Free time slots div -->
+		<div>
+			<table>
+				<thead>Appointment Time Allocation</thead>
+				<tr><th>Time</th><th>Assign</th></tr>
+			</table>
+		</div>
+	</div>
+	<!---------------------------------------------------------------------------------------------------------------------->
 	<!-- 
 	*this div act as a container for appointments
 	-->
@@ -62,65 +84,30 @@
 	<div id="schedule-div">
 		<!-- This section is removed when an ID has been selected -->
 		<div id="schedule-search-div">
-			<input type="text" id="schedule-search-field" placeholder="Enter patient id to begin search...">
-			<div id="schedule-box-results">
-				<ol>
-					<li>Dummy Id 1</li>
-					<li>Dummy Id 2</li>
-					<li>Dummy Id 3</li>
-					<li>Dummy Id 4</li>
-					<li>Dummy Id 5</li>
-				</ol>
-
+			<form name="appointment_search_form" id="search-form">
+				<input type="text" name="search_field" id="schedule-search-field" placeholder="Enter patient id to begin search...">
+				<input type="hidden" name="p_id" id="patientID-field">
+			</form>	
+			<div id="search-results">
+				
 			</div>
 		</div>
 		<!-- Div lets user continue with booking a patient -->
-		
-		<div id="sch-date-control">
-			<!-- Heading; Instruction and how to proceed -->
+	
+		<!-- Heading; Instruction and how to proceed -->
+		<!-- List months and years -->
+		<div id="sch-month-year">
 			<h2 class="schedule-bs-h2">Please choose the Month and Year then click to continue booking patient</h2>
-			<!-- List months and years -->
-			<div id="sch-month-year">
-				
-			</div #sch-day-control>
-			
-			<div id="sch-date-select">
-				<h2 class="schedule-bs-h2">Please choose the Month and Year then click to continue booking patient</h2>
-				<!-- Select day from particular month under a particular year-->
-			</div>
 		</div>
 		
-		<div id="sch-schedule-parent">
-
-			<div id="sch-schedule">
-				<table>
-					<tr><th>DAY</th><th>NUMBER OF BOOKINGS</th><th>SELECT TO BOOK</th></tr>
-				</table>
-			</div>
-
-			<div id="sch-right-pane">
-				<h2>STATS</h2>
-				<div>
-					<p>Patient Name: <label>Diana Wikilson</label></p>
-					<sp>future visits:  None</sp>
-				</div>
-				<!-- Number of bookings left-->
-				<div>
-					Number of booking allocations left // No more bookings allocations left
-				</div>
-				<!-- Free time slots div -->
-				<div>
-					<table>
-						<thead>Appointment Time Allocation</thead>
-						<tr><th>Time</th><th>Assign</th></tr>
-					</table>
-				</div>
-			</div>
+		<div id="sch-date-select">
+			<h2 class="schedule-bs-h2">Please select day of patient's next appointment</h2>
+			<!-- Select day from particular month under a particular year-->
+			<!-- DATE NUMBER OF BOOKINGS CHECKBOX SELECT TO BOOK-->
 		</div>
 		<div id="purpose-section">
 			<hr/>
 			<h2>Please select one or more reasons for appointment</h2>
-			
 			<ul>
 				<li>
 					<label>See Doctor</label>
@@ -132,7 +119,6 @@
 				</li>
 			</ul>
 		</div>
-
 		<div id="sch-btn-div"><button id="sch-btn">Schedule an appointment</button></div>
 	</div>
 </main>
@@ -143,10 +129,11 @@
 	//$prev_location;
 	//$current_page = $_SERVER['SCRIPT_NAME'];
 	$current_page = $_SERVER['SCRIPT_NAME'];
+
 ?>
-<input type="hidden" id="curr_page" value="<?php substr($current_page, stripos($current_page, "reception")); ?>">
+<input type="hidden" id="curr_page" value="<?php echo substr($current_page, stripos($current_page, "appointment")); ?>">
 
-
+<script type="text/javascript" src="../../../assets/js/search.js"></script>
 <script type="text/javascript" src="../../../assets/js/reception/main.js"></script>
 <script type="text/javascript" src="../../../assets/js/reception/schedule.js"></script>	
 </body>

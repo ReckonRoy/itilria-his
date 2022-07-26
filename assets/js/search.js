@@ -1,7 +1,8 @@
 let search = {
 	xhr: null,
 	url: null,
-	search_form: document.getElementById("search-form"),
+	search_form: document.getElementById("search-form"),//search form
+	ssd: document.getElementById('schedule-search-div'),//schedule search div
 	search_field: document.getElementById("search-field"),
 	search_field_d: document.getElementById("d-search-field"),
 	resultBox: document.getElementById("search-results"),
@@ -9,7 +10,7 @@ let search = {
 	patient_details: document.getElementById("patient-details"),
 	chargesheet_pid: document.getElementById('chargesheet-pid'),
 	img_pid: document.getElementById('img-pid'),
-
+	current_page: document.getElementById('curr_page'),
 	createXHR: function()
 	{
 		search.xhr = null;
@@ -91,6 +92,10 @@ let search = {
 		li.addEventListener("click", function(){
 			if(search.patient_details.style.display == "none"){
 				search.patient_details.style.display = "block";
+				//if page is appointment.php remove search div when patient is selected
+				if(search.current_page.value === "appointment.php"){
+					search.ssd.style.display = "none";
+				}
 			}
 			search.patient_details.innerHTML = "";
 			search.patientID_field.value = p_id;
@@ -118,11 +123,20 @@ let search = {
 
 				search.img_pid.value = p_id;
 			}
+
+			if (search.search_form.name === "appointment_search_form") {
+				document.getElementById("sch-month-year").style.display = "block";
+			}
 		});
 		
 	},
 	
 	runSearch: function(){
+		if(search.current_page.value === "appointment.php")
+		{
+			search.patient_details = document.getElementById("sch-right-pane");
+		}
+		
 		search.patient_details.style.display = "none";
 
 		search.createXHR();
@@ -133,6 +147,11 @@ let search = {
 			}else if(search.search_form.name == "doctor_search_form")
 			{
 				search.url = "../control/DoctorController.php";
+			}else if(search.search_form.name ==="appointment_search_form")
+			{
+				search.url = "../../commonController/SearchController.php";
+				search.patient_details = document.getElementById("sch-right-pane");
+				search.search_field = document.getElementById("schedule-search-field");
 			}
 			
 		});
@@ -141,7 +160,7 @@ let search = {
 			if(search.search_form.search_field.value.length <= 2)
 			{
 				search.resultBox.innerHTML = "";
-				search.resultBox.innerText = "Search returns results at 3 characters in length";
+				search.resultBox.innerText = `Too few arguments ...`;
 			}else{
 				search.request();
 			}

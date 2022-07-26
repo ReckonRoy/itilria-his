@@ -3,13 +3,13 @@
 *Section contains Styles for the Appointements Page
 *------------------------------------------------------------------------------------------------------------*/
 #app-nav-bar{
+	position: fixed;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-row-gap: 5px;
 	font-weight: bold;
 	font-size: 0.9rem;
-	width: 70%;
-	margin-left: 15%;
+	width: 85%;
 }
 
 #app-nav-bar button{
@@ -64,7 +64,7 @@
 	display: block;
 	box-sizing: border-box;
 	width: 70%;
-	margin-left: 15%;
+	margin-left: 5%;
 	padding: 20px 0;
 	border:  1px solid gray;
 }
@@ -80,39 +80,46 @@
 */
 #schedule-search-field{
 	width: 90%;
-	padding: 10px 0;
-	box-sizing: border-box;
 	margin-left: 5%;
+	padding: 10px 5px;
+	box-sizing: border-box;
+	margin-top: 16px;
+	border-radius: 10px;
+	font-size: 14px;
+	font-weight: bold;
+	color: gray;
+	background-color: white;
 }
 /*
 --------result box where search results will appear
 */
-#schedule-box-results{
-	display: block;
-	box-sizing: border-box;
+#search-results{
 	border: 1px solid gray;
-	background-color: lightgrey;
 	width: 90%;
-	margin-top: 10px;
-	padding-left: 10px;
-	line-height: 1.5em;
+	height: 150px;
 	margin-left: 5%;
+	box-sizing: border-box;
+	padding: 10px 16px;
+	margin-top: 20px;
+	border-radius: 10px;
+	font-style: italic;
+	background-color: white;
+	color: grey;
+	margin-bottom: 10px;
+	overflow-y: auto;
+	line-height: 1.5em;
+	font-style: italic;
 }
 
-#schedule-box-results ol{
-	list-style-type: none;
-	padding-left: 0px;
-	line-height: 1.3em;
+#rlist{
+	color: red;
+	font-size: 14px;
+	padding-left: 10px;
 }
 
-#schedule-box-results li{
-	padding: 5px 0;
-}
-
-#schedule-box-results li:hover{
+#rlist:hover{
+	background-color: purple;
 	cursor: pointer;
-	background-color: gray;
-	color: white;
 }
 /*
 ------------schedule date 
@@ -128,22 +135,41 @@
 	width: 78%;
 	margin-top: 30px;
 }
-
 /*
-------------schedule day 
+-------------schedule month year
 */
-#sch-day-control{
-	display: block;/*this is a block*/
+#sch-month-year{
+	display: none;
 	box-sizing: border-box;
 	border: 1px solid black;
 	padding: 10px 0;
 	background-color: purple;
 	color: white;
 	font-weight: bold;
-	width: 78%;
+	width: 100%;
 	margin-top: 30px;
 }
 
+/*
+------------schedule day 
+*/
+#sch-day-control{
+	display: block;/*this is a block*/
+	
+}
+
+#sch-date-select
+{
+	display: none;
+	box-sizing: border-box;
+	border: 1px solid black;
+	padding: 10px 0;
+	background-color: purple;
+	color: white;
+	font-weight: bold;
+	width: 100%;
+	margin-top: 30px;
+}
 .li_date{
 	padding: 5px 0;
 	padding-left: 10px;
@@ -192,8 +218,15 @@
 }
 
 #sch-right-pane{
-	display: inline-block;
-	float: right;
+	position: fixed;
+	top: 17%;
+	right: 1%;
+	width: 35%;
+	background-color: lightgray;
+	border-radius: 5px;
+	box-sizing: border-box;
+	padding: 0 10px;
+	border: 1px solid black;
 }
 
 #sch-right-pane h2{
@@ -215,7 +248,7 @@ hr{
 	width: 100%;
 }
 #purpose-section{
-	display: block;
+	display: none;
 	background-color: gray;
 	box-sizing: border-box;
 	padding: 20px 10px;
@@ -246,7 +279,7 @@ hr{
 }
 
 #sch-btn-div{
-	display: block;
+	display: none;
 	margin-top: 20px;
 	box-sizing: border-box;
 	padding-left: 10px;

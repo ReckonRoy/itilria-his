@@ -29,7 +29,9 @@ tabs = {
 class Appointment{
 	schedule_mydate = document.getElementById('sch-month-year');
 	schedule_day = document.getElementById('sch-date-select');
+	sbtn_div = document.getElementById("sch-btn-div");
 	schedule_btn = document.getElementById('sch-btn');
+	rfb = document.getElementById("purpose-section");//rfb-reason for booking
 	visit_reason1 = document.getElementById('option1');
 	visit_reason2 = document.getElementById('option2');
 	appointment_day = null;
@@ -68,7 +70,12 @@ class Appointment{
 					this.xhr.send(
 					"month_day=" + appointment.month_day_value	
 					);
-				} 
+				} else if(appointment.send_control === "book patient"){
+					this.xhr.send(
+							"appointment_date="+appointment.appointment_day
+							+"&appointment_reason="+appointment.reason_array
+						);
+				}
 				
 				/**if(emr.access_option == "emr_default_access")
 				{
@@ -148,7 +155,6 @@ class Appointment{
 			ul.appendChild(li);
 			appointment.getDateValue(li, "month_year_value");
 		}
-		
 		appointment.schedule_mydate.appendChild(ul);
 	}
 
@@ -163,7 +169,9 @@ class Appointment{
 			appointment.getDateValue(li, "day_value");
 		}
 		
+		appointment.schedule_day.style.display = "block";
 		appointment.schedule_day.appendChild(ul);
+		appointment.schedule_mydate.style.display = "none";
 	}
 
 	getDateValue(listProperty, option)
@@ -175,6 +183,8 @@ class Appointment{
 				appointment.getDayValue(listProperty.textContent);	
 			}else if(option === "day_value"){
 				appointment.appointment_day = listProperty.textContent;
+				appointment.rfb.style.display = "block";
+				appointment.sbtn_div.style.display = "block";
 			}
 			
 		});
@@ -205,7 +215,10 @@ class Appointment{
 					{
 						appointment.reason_array.push(appointment.visit_reason2.value);	
 					}
-										
+					
+					alert(` ${appointment.appointment_day}\n${appointment.reason_array}`);
+					appointment.send_control = "book patient";
+					appointment.request();					
 				}else{
 					alert("please select a reason for your visit");
 				}
