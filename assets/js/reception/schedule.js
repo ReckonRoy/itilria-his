@@ -71,9 +71,12 @@ class Appointment{
 					"month_day=" + appointment.month_day_value	
 					);
 				} else if(appointment.send_control === "book patient"){
+					patient_id = document.getElementById('patientID-field').value;
+					alert(patient_id);
 					this.xhr.send(
 							"appointment_date="+appointment.appointment_day
 							+"&appointment_reason="+appointment.reason_array
+							+"&patient_id="+patient_id
 						);
 				}
 				
