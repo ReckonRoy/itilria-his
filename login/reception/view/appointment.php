@@ -87,6 +87,7 @@
 			<form name="appointment_search_form" id="search-form">
 				<input type="text" name="search_field" id="schedule-search-field" placeholder="Enter patient id to begin search...">
 				<input type="hidden" name="p_id" id="patientID-field">
+				<input type="hidden" name="staff_id" id="staff-id" value="<?php echo $_SESSION['user_id'];?>">
 			</form>	
 			<div id="search-results">
 				

@@ -27,8 +27,10 @@ tabs = {
 }
 
 class Appointment{
+	staff_id = document.getElementById('staff-id');
 	schedule_mydate = document.getElementById('sch-month-year');
 	schedule_day = document.getElementById('sch-date-select');
+	patient_id = document.getElementById('patientID-field');
 	sbtn_div = document.getElementById("sch-btn-div");
 	schedule_btn = document.getElementById('sch-btn');
 	rfb = document.getElementById("purpose-section");//rfb-reason for booking
@@ -71,12 +73,11 @@ class Appointment{
 					"month_day=" + appointment.month_day_value	
 					);
 				} else if(appointment.send_control === "book patient"){
-					patient_id = document.getElementById('patientID-field').value;
-					alert(patient_id);
 					this.xhr.send(
 							"appointment_date="+appointment.appointment_day
 							+"&appointment_reason="+appointment.reason_array
-							+"&patient_id="+patient_id
+							+"&patient_id="+appointment.patient_id.value
+							+"&staff_id="+appointment.staff_id.value
 						);
 				}
 				
@@ -120,8 +121,12 @@ class Appointment{
 					}else if(result[2] == "month_day")
 					{
 						appointment.content_day(result[1]);
+					}else if(result[2] == "appointment_saved")
+					{
+						alert("appointment has been successfully saved");
 					}
-					
+				}else{
+					alert(result[2]);
 				}
 
 				/*try{
@@ -219,7 +224,7 @@ class Appointment{
 						appointment.reason_array.push(appointment.visit_reason2.value);	
 					}
 					
-					alert(` ${appointment.appointment_day}\n${appointment.reason_array}`);
+					alert(` ${appointment.appointment_day}\n${appointment.reason_array}\n`);
 					appointment.send_control = "book patient";
 					appointment.request();					
 				}else{
@@ -229,6 +234,8 @@ class Appointment{
 				alert("Please select an appointment day");
 			}
 		});
+
+
 	}
 
 }
